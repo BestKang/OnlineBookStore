@@ -21,5 +21,10 @@
                 <param name="root">map</param>
             </result>
         </action>
+        <action name="bookOrder" method="getOrder" class="action.bookOrdersAction">
+            <result type="json">
+                <param name="root">orderlist</param>
+            </result>
+        </action>
     </package>
 </struts>
