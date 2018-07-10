@@ -1,4 +1,4 @@
-package bean;
+package test;
 import dao.GenericityDao;
 public class Ebooktest {                     //测试用类，无用
 	private String idebook;

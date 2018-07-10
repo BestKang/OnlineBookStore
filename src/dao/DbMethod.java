@@ -67,14 +67,14 @@ public class DbMethod {
 				Pbook pb=new Pbook();
 				pb.setIdPbook(rs.getString("idPbook"));
 				pb.setPbookAbstract(rs.getString("PbookAbstract"));
-				pb.setPbookClickTimes(rs.getString("PbookClickTimes"));
+				pb.setPbookClickTimes(rs.getInt("PbookClickTimes"));
 				pb.setPbookName(rs.getString("PbookName"));
 				pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
-				pb.setPbookPrice(rs.getString("PbookPrice"));
+				pb.setPbookPrice(rs.getDouble("PbookPrice"));
 				pb.setPbookPublisher(rs.getString("PbookPublisher"));
 				pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
-				pb.setPbookSoldNumber(rs.getString("PbookSoldNumber"));
-				pb.setPbookStockNumber(rs.getString("PbookStockNumber"));
+				pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
+				pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
 				pb.setPbookWriter(rs.getString("PbookWriter"));
 				objArrayL.add(pb);
 			}
@@ -101,10 +101,10 @@ public class DbMethod {
 			Ebook pb=new Ebook();
 			pb.setIdebook(rs.getString("idebook"));
 			pb.setEbookAbstract(rs.getString("ebookAbstract"));
-			pb.setEbookClickTimes(rs.getString("ebookClickTimes"));
+			pb.setEbookClickTimes(rs.getInt("ebookClickTimes"));
 			pb.setEbookPictureUrl(rs.getString("ebookPictureUrl"));
-			pb.setEbookPrice(rs.getString("ebookPrice"));
-			pb.setEbookSoldNumber(rs.getString("ebookSoldNumber"));
+			pb.setEbookPrice(rs.getDouble("ebookPrice"));
+			pb.setEbookSoldNumber(rs.getInt("ebookSoldNumber"));
 			pb.setEbookWriter(rs.getString("ebookWriter"));
 			pb.setEbookNameS(rs.getString("ebookName"));
 			objArrayL.add(pb);
@@ -131,14 +131,14 @@ public class DbMethod {
 			Obook pb=new Obook();
 			pb.setIdobook(rs.getString("idobook"));
 			pb.setObookAbstract(rs.getString("obookAbstract"));
-			pb.setObookClickTimes(rs.getString("obookClickTimes"));
+			pb.setObookClickTimes(rs.getInt("obookClickTimes"));
 			pb.setObookName(rs.getString("obookName"));
 			pb.setObookPictureUrl(rs.getString("obookPictureUrl"));
-			pb.setObookPrice(rs.getString("obookPrice"));
+			pb.setObookPrice(rs.getDouble("obookPrice"));
 			pb.setObookPublisher(rs.getString("obookPublisher"));
 			pb.setObookPublishTime(rs.getString("obookPublishTime"));
-			pb.setObookSoldNumber(rs.getString("obookSoldNumber"));
-			pb.setObookStockNumber(rs.getString("obookStockNumber"));
+			pb.setObookSoldNumber(rs.getInt("obookSoldNumber"));
+			pb.setObookStockNumber(rs.getInt("obookStockNumber"));
 			pb.setObookWriter(rs.getString("obookWriter"));
 			objArrayL.add(pb);
 		}
@@ -164,14 +164,14 @@ public class DbMethod {
 			Pbook pb=new Pbook();
 			pb.setIdPbook(rs.getString("idPbook"));
 			pb.setPbookAbstract(rs.getString("PbookAbstract"));
-			pb.setPbookClickTimes(rs.getString("PbookClickTimes"));
+			pb.setPbookClickTimes(rs.getInt("PbookClickTimes"));
 			pb.setPbookName(rs.getString("PbookName"));
 			pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
-			pb.setPbookPrice(rs.getString("PbookPrice"));
+			pb.setPbookPrice(rs.getDouble("PbookPrice"));
 			pb.setPbookPublisher(rs.getString("PbookPublisher"));
 			pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
-			pb.setPbookSoldNumber(rs.getString("PbookSoldNumber"));
-			pb.setPbookStockNumber(rs.getString("PbookStockNumber"));
+			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
+			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
 			pb.setPbookWriter(rs.getString("PbookWriter"));
 			topList.add(pb);
 		}
@@ -186,6 +186,116 @@ public class DbMethod {
 
 		// TODO Auto-generated method stub
 	}
+	public Pbook searchPbookUrl(String idPbook){
+		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		Pbook pb=new Pbook();
+		String sql="select * from pbook where idPbook="+idPbook+"";
+		System.out.println("searchPook查询语句:"+sql);
+		try{
+			ps = conn.createStatement();			
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){
+			
+			pb.setIdPbook(rs.getString("idPbook"));
+			pb.setPbookAbstract(rs.getString("PbookAbstract"));
+			pb.setPbookClickTimes(rs.getInt("PbookClickTimes"));
+			pb.setPbookName(rs.getString("PbookName"));
+			pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
+			pb.setPbookPrice(rs.getDouble("PbookPrice"));
+			pb.setPbookPublisher(rs.getString("PbookPublisher"));
+			pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
+			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
+			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
+			pb.setPbookWriter(rs.getString("PbookWriter"));
+			//objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		
+		return pb;
+}	
+	public Obook searchObookUrl(String idobook){
+		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		Obook pb=new Obook();
+		String sql="select * from obook where idobook="+idobook+"";
+		System.out.println("searchPook查询语句:"+sql);
+		try{
+			ps = conn.createStatement();			
+		 rs=ps.executeQuery(sql);
+		 if (!rs.next()) {
+			return null;
+		}
+		 rs.previous();
+		while(rs.next()){
+			pb.setIdobook(rs.getString("idobook"));
+			pb.setObookAbstract(rs.getString("obookAbstract"));
+			pb.setObookClickTimes(rs.getInt("obookClickTimes"));
+			pb.setObookName(rs.getString("obookName"));
+			pb.setObookPictureUrl(rs.getString("obookPictureUrl"));
+			pb.setObookPrice(rs.getDouble("obookPrice"));
+			pb.setObookPublisher(rs.getString("obookPublisher"));
+			pb.setObookPublishTime(rs.getString("obookPublishTime"));
+			pb.setObookSoldNumber(rs.getInt("obookSoldNumber"));
+			pb.setObookStockNumber(rs.getInt("obookStockNumber"));
+			pb.setObookWriter(rs.getString("obookWriter"));
+			//objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		if (pb==null) {
+			System.out.println("zheshikongde");
+		}
+		return pb;
+}	
+	/*public ArrayList<Pbook> searchPbookUrl(String idPbook){
+		ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		String sql="select * from pbook where idPbook="+idPbook+"";
+		System.out.println("searchPook查询语句:"+sql);
+		try{
+			ps = conn.createStatement();			
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){
+			Pbook pb=new Pbook();
+			pb.setIdPbook(rs.getString("idPbook"));
+			pb.setPbookAbstract(rs.getString("PbookAbstract"));
+			pb.setPbookClickTimes(rs.getString("PbookClickTimes"));
+			pb.setPbookName(rs.getString("PbookName"));
+			pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
+			pb.setPbookPrice(rs.getString("PbookPrice"));
+			pb.setPbookPublisher(rs.getString("PbookPublisher"));
+			pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
+			pb.setPbookSoldNumber(rs.getString("PbookSoldNumber"));
+			pb.setPbookStockNumber(rs.getString("PbookStockNumber"));
+			pb.setPbookWriter(rs.getString("PbookWriter"));
+			objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		
+		return objArrayL;
+}*/
+
 	public  boolean insert(String sql, Object... args) {
 		PreparedStatement ps = null;
 		try {
@@ -208,6 +318,7 @@ public class DbMethod {
 	}
 	public  boolean update(String sql) {
 		PreparedStatement ps = null;
+		System.out.println(sql);
 		try {
 			ps = conn.prepareStatement(sql);
 //			for (int i = 0; i < args.length; i++) {

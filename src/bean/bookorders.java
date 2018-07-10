@@ -5,18 +5,30 @@ public class bookorders {
 	private String idUser;
 	private String bookId;
 	private String bookName;
-	private String bookNumber;
-	private String cost;
+	private int bookNumber;
+	private double cost;
 	private String shippingAddress;
 	private String receiverName;
-	private String createTime;
-	private String payTime;
+	private String booktype;
+	private String pictureUrl;
 	private String finishTime;
 	public String getIdbookorders() {
 		return idbookorders;
 	}
 	public void setIdbookorders(String idbookorders) {
 		this.idbookorders = idbookorders;
+	}
+	public String getBooktype() {
+		return booktype;
+	}
+	public void setBooktype(String booktype) {
+		this.booktype = booktype;
+	}
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
 	}
 	public String getIdUser() {
 		return idUser;
@@ -36,16 +48,16 @@ public class bookorders {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public String getBookNumber() {
+	public int getBookNumber() {
 		return bookNumber;
 	}
-	public void setBookNumber(String bookNumber) {
+	public void setBookNumber(int bookNumber) {
 		this.bookNumber = bookNumber;
 	}
-	public String getCost() {
+	public double getCost() {
 		return cost;
 	}
-	public void setCost(String cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 	public String getShippingAddress() {
@@ -60,18 +72,7 @@ public class bookorders {
 	public void setReceiverName(String receiverName) {
 		this.receiverName = receiverName;
 	}
-	public String getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-	public String getPayTime() {
-		return payTime;
-	}
-	public void setPayTime(String payTime) {
-		this.payTime = payTime;
-	}
+	
 	public String getFinishTime() {
 		return finishTime;
 	}

@@ -11,7 +11,7 @@ public class connDB {
 	
 	private static String username = "root";
 	
-	private static String password = "2269";
+	private static String password = "123456789";
 	
 	private static String url = "jdbc:mysql://localhost/bookstore?characterEncoding=UTF-8&useSSL=true";
 
@@ -30,6 +30,7 @@ public class connDB {
 			System.out.println("\n[sqlException]:"+" "+e.getMessage()+"\n");
 		}
 		return conn;
+	
 	}
 	
 	public static void freeAll(Connection conn, Statement st, ResultSet rs) {

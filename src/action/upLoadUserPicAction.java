@@ -17,7 +17,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class upLoadUserPicAction extends ActionSupport implements ModelDriven<UpLoadUserPic>{
+public class upLoadUserPicAction extends ActionSupport implements ModelDriven<UpLoadUserPic>{    //测试类
 	UpLoadUserPic picFile;
 	Map<String,Object> result=new HashMap<String, Object>();
 	public Map<String, Object> getResult() {

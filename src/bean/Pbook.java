@@ -6,12 +6,12 @@ public class Pbook {
 	private String pbookWriter;
 	private String pbookPublisher;
 	private String pbookPublishTime;
-	private String pbookPrice;
-	private String pbookStockNumber;
-	private String pbookSoldNumber;
+	private double pbookPrice;
+	private int pbookStockNumber;
+	private int pbookSoldNumber;
 	private String pbookAbstract;
 	private String pbookPictureUrl;
-	private String pbookClickTimes;
+	private int pbookClickTimes;
 	public String getIdPbook() {
 		return idPbook;
 	}
@@ -42,22 +42,22 @@ public class Pbook {
 	public void setPbookPublishTime(String pbookPublishTime) {
 		this.pbookPublishTime = pbookPublishTime;
 	}
-	public String getPbookPrice() {
+	public double getPbookPrice() {
 		return pbookPrice;
 	}
-	public void setPbookPrice(String pbookPrice) {
+	public void setPbookPrice(double pbookPrice) {
 		this.pbookPrice = pbookPrice;
 	}
-	public String getPbookStockNumber() {
+	public int getPbookStockNumber() {
 		return pbookStockNumber;
 	}
-	public void setPbookStockNumber(String pbookStockNumber) {
+	public void setPbookStockNumber(int pbookStockNumber) {
 		this.pbookStockNumber = pbookStockNumber;
 	}
-	public String getPbookSoldNumber() {
+	public int getPbookSoldNumber() {
 		return pbookSoldNumber;
 	}
-	public void setPbookSoldNumber(String pbookSoldNumber) {
+	public void setPbookSoldNumber(int pbookSoldNumber) {
 		this.pbookSoldNumber = pbookSoldNumber;
 	}
 	public String getPbookAbstract() {
@@ -72,10 +72,10 @@ public class Pbook {
 	public void setPbookPictureUrl(String pbookPictureUrl) {
 		this.pbookPictureUrl = pbookPictureUrl;
 	}
-	public String getPbookClickTimes() {
+	public int getPbookClickTimes() {
 		return pbookClickTimes;
 	}
-	public void setPbookClickTimes(String pbookClickTimes) {
+	public void setPbookClickTimes(int pbookClickTimes) {
 		this.pbookClickTimes = pbookClickTimes;
 	}
 }
