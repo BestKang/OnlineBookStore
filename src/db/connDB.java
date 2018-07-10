@@ -30,6 +30,7 @@ public class connDB {
 			System.out.println("\n[sqlException]:"+" "+e.getMessage()+"\n");
 		}
 		return conn;
+	
 	}
 	
 	public static void freeAll(Connection conn, Statement st, ResultSet rs) {

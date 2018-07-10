@@ -284,9 +284,12 @@ public class Dao2 {
 
             Statement stm = con.createStatement();
             // 得到执行查寻语句返回的结果集
+            
             ResultSet rs = stm.executeQuery(sql);
             // 得到对象的方法数组
+            
             Method[] methods = c.getMethods();
+            
             list=new ArrayList<>();
             // 遍历结果集
             while (rs.next()) {

@@ -6,12 +6,12 @@ public class Obook {
 	private String obookWriter;
 	private String obookPublisher;
 	private String obookPublishTime;
-	private String obookPrice;
-	private String obookStockNumber;
-	private String obookSoldNumber;
+	private double obookPrice;
+	private int obookStockNumber;
+	private int obookSoldNumber;
 	private String obookAbstract;
 	private String obookPictureUrl;
-	private String obookClickTimes;
+	private int obookClickTimes;
 	private String obookUpTime;
 	public String getIdobook() {
 		return idobook;
@@ -43,22 +43,22 @@ public class Obook {
 	public void setObookPublishTime(String obookPublishTime) {
 		this.obookPublishTime = obookPublishTime;
 	}
-	public String getObookPrice() {
+	public double getObookPrice() {
 		return obookPrice;
 	}
-	public void setObookPrice(String obookPrice) {
+	public void setObookPrice(double obookPrice) {
 		this.obookPrice = obookPrice;
 	}
-	public String getObookStockNumber() {
+	public int getObookStockNumber() {
 		return obookStockNumber;
 	}
-	public void setObookStockNumber(String obookStockNumber) {
+	public void setObookStockNumber(int obookStockNumber) {
 		this.obookStockNumber = obookStockNumber;
 	}
-	public String getObookSoldNumber() {
+	public int getObookSoldNumber() {
 		return obookSoldNumber;
 	}
-	public void setObookSoldNumber(String obookSoldNumber) {
+	public void setObookSoldNumber(int obookSoldNumber) {
 		this.obookSoldNumber = obookSoldNumber;
 	}
 	public String getObookAbstract() {
@@ -73,10 +73,10 @@ public class Obook {
 	public void setObookPictureUrl(String obookPictureUrl) {
 		this.obookPictureUrl = obookPictureUrl;
 	}
-	public String getObookClickTimes() {
+	public int getObookClickTimes() {
 		return obookClickTimes;
 	}
-	public void setObookClickTimes(String obookClickTimes) {
+	public void setObookClickTimes(int obookClickTimes) {
 		this.obookClickTimes = obookClickTimes;
 	}
 	public String getObookUpTime() {

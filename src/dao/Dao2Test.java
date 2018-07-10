@@ -24,7 +24,7 @@ public class Dao2Test {
 			newUserBean.setUserAddress("dasda");
 			newUserBean.setUserName("da帅哥");		
 			newUserBean.setIdUser(String.valueOf(i));*/
-			Pbook pbook =  new Pbook();
+		/*	Pbook pbook =  new Pbook();
 			pbook.setPbookName("昆虫记"+String.valueOf(i));
 			pbook.setPbookWriter("大帅比"+String.valueOf(i));
 			pbook.setPbookPrice(String.valueOf(i));
@@ -36,7 +36,7 @@ public class Dao2Test {
 			  
 			String sd = sdf.format(new Date().getTime());  
 			pbook.setPbookPublishTime(sd);
-			dao2.getSaveObjectSql(pbook);
+			dao2.getSaveObjectSql(pbook);*/
 		}
 		
 		
