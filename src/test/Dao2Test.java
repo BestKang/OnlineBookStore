@@ -1,4 +1,4 @@
-package dao;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,7 @@ import java.util.Date;
 
 import bean.NewUserBean;
 import bean.user;
+import dao.Dao2;
 import bean.Pbook;
 import org.junit.Test;
 

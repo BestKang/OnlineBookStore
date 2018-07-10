@@ -31,5 +31,15 @@
                 <param name="root">result</param><!-- 这个action为测试用 -->
             </result>
         </action>
+        <action name="queryorderslist" method="queryorderslist" class="action.queryordersAction">
+            <result name="SUCCEESS" type="json">
+                <param name="root">map</param>
+            </result>
+        </action>
+        <action name="shopping" method="shopping" class="action.shoppingAction">
+            <result type="json">
+                <param name="root">map</param>
+            </result>
+        </action>
     </package>
 </struts>

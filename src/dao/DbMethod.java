@@ -186,7 +186,6 @@ public class DbMethod {
 
 		// TODO Auto-generated method stub
 	}
-<<<<<<< HEAD
 	public Pbook searchPbookUrl(String idPbook){
 		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
 		ResultSet rs = null;
@@ -296,8 +295,7 @@ public class DbMethod {
 		
 		return objArrayL;
 }*/
-=======
->>>>>>> 224d76c9cda3df08554dca0c74f2be258761db78
+
 	public  boolean insert(String sql, Object... args) {
 		PreparedStatement ps = null;
 		try {

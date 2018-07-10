@@ -1,4 +1,4 @@
-package service;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -11,6 +11,7 @@ import bean.Pbook;
 import bean.bookorders;
 import bean.user;
 import dao.DbMethod;
+import service.BookOrdersService;
 
 public class BookOrdersServiceTest {
 
