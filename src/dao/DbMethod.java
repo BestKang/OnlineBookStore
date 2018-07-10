@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 import db.connDB;
 import bean.Ebook;
 import bean.Obook;
@@ -184,6 +186,7 @@ public class DbMethod {
 
 		// TODO Auto-generated method stub
 	}
+<<<<<<< HEAD
 	public Pbook searchPbookUrl(String idPbook){
 		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
 		ResultSet rs = null;
@@ -293,6 +296,8 @@ public class DbMethod {
 		
 		return objArrayL;
 }*/
+=======
+>>>>>>> 224d76c9cda3df08554dca0c74f2be258761db78
 	public  boolean insert(String sql, Object... args) {
 		PreparedStatement ps = null;
 		try {
@@ -313,12 +318,10 @@ public class DbMethod {
 		return false;
 
 	}
-	public  boolean update(String sql, Object... args) {
-		Connection conn = null;
+	public  boolean update(String sql) {
 		PreparedStatement ps = null;
 		System.out.println(sql);
 		try {
-			conn = connDB.getConnection();
 			ps = conn.prepareStatement(sql);
 //			for (int i = 0; i < args.length; i++) {
 //				ps.setObject(i + 1, args[i]);
@@ -334,6 +337,69 @@ public class DbMethod {
 		}
 		return false;
 
+	}
+	public boolean update(String TableName,List attr,List value,String ConditionClause){
+		boolean flag=false;
+		String sql="update "+TableName+" set ";
+		if(attr.size()!=value.size())
+		{
+			System.out.println("Exception:属性个数和值的个数不一致");
+			return false;
+		}
+		for(int i=0;i<attr.size();i++){
+			sql+=attr.get(i).toString()+" ='"+value.get(i).toString()+"', ";
+		}
+		String sql1=sql.substring(0, sql.length()-2);
+		String sql2=sql1+" "+ConditionClause;
+		System.out.println("三参数update语句:"+sql2);
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql2);
+//			for (int i = 0; i < args.length; i++) {
+//				ps.setObject(i + 1, args[i]);
+//			}
+			if(ps.executeUpdate()==1)
+				flag=true;	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("\n[updatesqlException]:"+" "+e.getMessage()+"\n");
+		}finally {
+			connDB.frees( ps, null);
+		}
+		if(flag)
+			return true;
+		return false;
+	}
+	public boolean update(String TableName,List attr,List value){
+		boolean flag=false;
+		String sql="update "+TableName+" set ";
+		if(attr.size()!=value.size())
+		{
+			System.out.println("Exception:属性个数和值的个数不一致");
+			return false;
+		}
+		for(int i=0;i<attr.size();i++){
+			sql+=attr.get(i).toString()+" ='"+value.get(i).toString()+"', ";
+		}
+		String sql1=sql.substring(0, sql.length()-2);
+		System.out.println("2参数update语句:"+sql1);
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql1);
+//			for (int i = 0; i < args.length; i++) {
+//				ps.setObject(i + 1, args[i]);
+//			}
+			if(ps.executeUpdate()==1)
+				flag=true;	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("\n[updatesqlException]:"+" "+e.getMessage()+"\n");
+		}finally {
+			connDB.frees( ps, null);
+		}
+		if(flag)
+			return true;
+		return false;
 	}
 	public void closeConn() {
 		try {

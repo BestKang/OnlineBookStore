@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 import javax.enterprise.deploy.model.DDBean;
 
 import com.mysql.jdbc.Connection;
@@ -18,10 +19,11 @@ import com.mysql.jdbc.Connection;
 import bean.Ebook;
 import bean.Obook;
 import bean.Pbook;
+=======
+>>>>>>> 224d76c9cda3df08554dca0c74f2be258761db78
 import bean.bookorders;
 import bean.user;
 import dao.Dao2;
-import dao.DbMethod;
 
 public class BookOrdersService {
 	private Dao2 dao2;
@@ -40,7 +42,10 @@ public class BookOrdersService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 224d76c9cda3df08554dca0c74f2be258761db78
 		Map<String,Object> MapObj=new HashMap<String,Object>();
 		MapObj.put("order", bookorders);
 		ArrayList<Map<String,Object>> arrayList = new ArrayList<Map<String,Object>>();
@@ -53,6 +58,7 @@ public class BookOrdersService {
 	public ArrayList<Map<String,Object>> getOrderList(user user){
 		//System.out.println(2222);
 		List<Object> list = new ArrayList<Object>();
+<<<<<<< HEAD
 		
 		List<Object> list2 = new ArrayList<Object>();
 		
@@ -64,11 +70,18 @@ public class BookOrdersService {
 		try {
 			list=dao2.getObjectList("bean.bookorders", "idUser", user.getIdUser());			
 			//list3=dao2.getObjectList("bean.bookorders", param, value)
+=======
+		try {
+			list=dao2.getObjectList("bean.bookorders", "idUser", user.getIdUser());
+			//System.out.println(333);
+>>>>>>> 224d76c9cda3df08554dca0c74f2be258761db78
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Map<String,Object> MapObj=new HashMap<String,Object>();
 		MapObj.put("order", list);
+<<<<<<< HEAD
 	/*	
 		DbMethod db=new DbMethod();
 		for (int i = 0; i < list.size(); i++) {
@@ -109,6 +122,15 @@ public class BookOrdersService {
 		//System.out.println(bd.getBookName());
 		//System.out.println(pb.getPbookPictureUrl());
 
+=======
+		ArrayList<Map<String,Object>> arrayList = new ArrayList<Map<String,Object>>();
+		arrayList.add(MapObj);
+		//System.out.println(bookorders.getBookName());
+		List<Object> list2=(List<Object>)arrayList.get(0).get("order");
+		bookorders order=(bookorders)list2.get(1);
+		System.out.println(arrayList.get(0));
+		System.out.println("测试输出："+order.getBookName());
+>>>>>>> 224d76c9cda3df08554dca0c74f2be258761db78
 		return arrayList;
 	}
 	
