@@ -260,7 +260,41 @@ public class DbMethod {
 			System.out.println("zheshikongde");
 		}
 		return pb;
-}	
+}
+	public Pbook searchPbook(String idPbook){
+		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		String sql="select * from pbook where idPbook="+idPbook;
+		System.out.println("searchPook查询语句:"+sql);
+		Pbook pb=new Pbook();
+		try{
+			ps = conn.createStatement();
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){			
+			pb.setIdPbook(rs.getString("idPbook"));
+			pb.setPbookAbstract(rs.getString("PbookAbstract"));
+			pb.setPbookClickTimes(rs.getInt("PbookClickTimes"));
+			pb.setPbookName(rs.getString("PbookName"));
+			pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
+			pb.setPbookPrice(rs.getDouble("PbookPrice"));
+			pb.setPbookPublisher(rs.getString("PbookPublisher"));
+			pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
+			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
+			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
+			pb.setPbookWriter(rs.getString("PbookWriter"));
+			//objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		
+		return pb;
+}
 	/*public ArrayList<Pbook> searchPbookUrl(String idPbook){
 		ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
 		ResultSet rs = null;
