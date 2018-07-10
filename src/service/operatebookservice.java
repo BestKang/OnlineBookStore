@@ -40,4 +40,24 @@ public class operatebookservice {
 //	public boolean deletPbook() {
 //		
 //	}
+	public boolean updatePBook(Pbook pbook){//实体书
+		String pbookName=pbook.getPbookName();
+		String pbookWriter=pbook.getPbookWriter();
+		String pbookPublisher=pbook.getPbookPublisher();
+		String pbookPublishTime=pbook.getPbookPublishTime();
+		double pbookPrice=pbook.getPbookPrice();
+		int pbookStockNumber=pbook.getPbookStockNumber();
+		int pbookSoldNumber=pbook.getPbookSoldNumber();
+		String pbookAbstract=pbook.getPbookAbstract();
+		String pbookPictureUrl=pbook.getPbookPictureUrl();
+		int pbookClickTimes=pbook.getPbookClickTimes();
+		Object[] args={pbookName,pbookWriter,pbookPublisher,pbookPublishTime,pbookPrice,pbookStockNumber,pbookSoldNumber,pbookAbstract,pbookPictureUrl,pbookClickTimes};
+		String sql="update pbook set pbookName="+pbookName+",pbookWriter="+pbookWriter+",pbookPublisher"+pbookPublisher+",pbookPublishTime="+pbookPublishTime+
+				",pbookPrice="+pbookPrice+",pbookStockNumber="+pbookStockNumber+",pbookSoldNumber="+pbookSoldNumber+
+				",pbookAbstract="+pbookAbstract+",pbookPictureUrl="+pbookPictureUrl+",pbookClickTimes="+pbookClickTimes";
+		if (db.insert(sql, args)) {
+			return true;
+		}		
+		return false;
+	}
 }

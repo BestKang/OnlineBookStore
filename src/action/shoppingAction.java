@@ -59,7 +59,7 @@ public class shoppingAction extends ActionSupport{
 	public String shopping(){
 		BookOrdersService bookOrdersService=new BookOrdersService();
 		//List<Map<String,Object>> orderlist=new ArrayList<Map<String,Object>>();
-		
+		//pbook.setIdPbook(idPbook);
 		
 		
 		

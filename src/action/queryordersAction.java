@@ -7,12 +7,14 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionSupport;
 //import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.ModelDriven;
 
+import bean.UserBean;
 import bean.bookListBean;
 import bean.user;
 import service.BookOrdersService;
 
-public class queryordersAction extends ActionSupport {
+public class queryordersAction extends ActionSupport  {
 	user user = new user();
 	List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
 	Map<String,Object> map=new HashMap<String, Object>();
