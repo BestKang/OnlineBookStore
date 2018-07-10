@@ -21,9 +21,14 @@
                 <param name="root">map</param>
             </result>
         </action>
-        <action name="bookOrder" method="getOrder" class="action.bookOrdersAction">
+        <action name="userCenterUpdate" method="userCenterRs" class="action.userCenterAction">
             <result type="json">
-                <param name="root">orderlist</param>
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        <action name="hhh" method="hh" class="action.upLoadUserPicAction">
+            <result type="json">
+                <param name="root">result</param><!-- 这个action为测试用 -->
             </result>
         </action>
     </package>

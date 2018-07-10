@@ -7,6 +7,13 @@ public class user {
 	private String userName;
 	private String userPhone;
 	private String userAddress;
+	private String userPictureUrl;
+	public String getUserPictureUrl() {
+		return userPictureUrl;
+	}
+	public void setUserPictureUrl(String userPictureUrl) {
+		this.userPictureUrl = userPictureUrl;
+	}
 	//private String userName;
 	public user(){
 		this.userAccount="账号名";
@@ -14,7 +21,7 @@ public class user {
 		this.userAddress="收货地址";
 		this.userName="用户名";
 		this.userPhone="手机号";
- 
+		this.userPictureUrl="用户图片路径";
 	}
 	public String getIdUser() {
 		return idUser;
