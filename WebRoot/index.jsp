@@ -13,6 +13,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--  <script src="jquery/jquery-2.0.3.min.js"></script>-->
 	<script>
 	$(document).ready(function(){
+		$.ajax({
+			type:"POST",
+			url:"isLogin?t="+new Date().getTime(),
+			dataType:"json",
+			cache:false,
+			success:function(data){
+				if(data["result"]=="已登录"){
+					alert(data["result"]+":{用户名:"+data["userName"]+",用户id:"+data["idUser"]+"}");
+				}
+				else
+				{
+					alert(data["result"]);
+				}
+			},
+			error:function(xhr){
+				alert("error: "+xhr.responseText);
+			}
+		})
 	$("#btn").click(function(){
 		$.ajax({
 			type:"POST",

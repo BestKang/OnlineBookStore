@@ -31,5 +31,10 @@
                 <param name="root">result</param><!-- 这个action为测试用 -->
             </result>
         </action>
+        <action name="isLogin" method="isUserLoginRs" class="action.IsUserLogin">
+            <result type="json" >
+                <param name="root">userInfo</param>
+            </result>
+        </action>
     </package>
 </struts>

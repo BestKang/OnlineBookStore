@@ -8,16 +8,11 @@ import bean.UserBean;
 
 public class LoginService {
 
-	public boolean login(UserBean user) {
-		if(this.LoginSearch(user))
-		{
-		// TODO Auto-generated method stub
-		return true;
-		}
-		return false;
+	public ArrayList<Map<String,Object>> login(UserBean user) {
+		return this.LoginSearch(user);
 	}
 
-	private boolean LoginSearch(UserBean user) {
+	private ArrayList<Map<String,Object>> LoginSearch(UserBean user) {
 		// TODO Auto-generated method stub
 		String userAccount=user.getUserAccount();
 		String userPassword=user.getUserPassword();
@@ -26,9 +21,7 @@ public class LoginService {
 		ArrayList<Map<String,Object>> arr=db.search("select idUser,userName from user where userAccount='"+userAccount+"' and userPassword='"+userPassword+"'",2,"idUser","userName");
 		System.out.println("arraySize:"+arr.size());
 		db.closeConn();
-		if(arr.size()>0)
-			return true;
-		return false;
+		return arr;
 	}
 
 }

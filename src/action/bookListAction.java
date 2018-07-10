@@ -9,16 +9,15 @@ import org.apache.struts2.json.JSONUtil;
 
 import service.getBookList;
 
+import bean.ClientTime;
 import bean.Ebook;
 import bean.Obook;
 import bean.Pbook;
-import bean.bookListBean;
-
 //import com.alibaba.fastjson.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class bookListAction extends ActionSupport implements ModelDriven<bookListBean> {
+public class bookListAction extends ActionSupport implements ModelDriven<ClientTime> {
 	List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
 	public List<Map<String, Object>> getData() {
 		return data;
@@ -37,14 +36,15 @@ public class bookListAction extends ActionSupport implements ModelDriven<bookLis
 		
 	}
 	
-	private bookListBean bl=new bookListBean();
-	public bookListBean getBl() {
+	private ClientTime bl=new ClientTime();
+	
+
+	public ClientTime getBl() {
 		return bl;
 	}
-	public void setBl(bookListBean bl) {
+	public void setBl(ClientTime bl) {
 		this.bl = bl;
 	}
-
 	public String bookListRs(){
 		getBookList gbl=new getBookList();
 		 //Map<String, Object> map1 = new HashMap<String, Object>();  
@@ -66,7 +66,7 @@ public class bookListAction extends ActionSupport implements ModelDriven<bookLis
 		return SUCCESS;
 	}
 	@Override
-	public bookListBean getModel() {
+	public ClientTime getModel() {
 		
 		// TODO Auto-generated method stub
 		return this.bl;
