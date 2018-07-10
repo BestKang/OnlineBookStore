@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+    <package name="default" namespace="/" extends="json-default">  
+    <action name="login" method="LoginExcute" class="action.LoginAction">
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        <action name="register" method="registerExcute" class="action.registerAction">
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+         <action name="bookList" method="bookListRs" class="action.bookListAction">
+            <result type="json">
+                <param name="root">map</param>
+            </result>
+        </action>
+    </package>
+</struts>
