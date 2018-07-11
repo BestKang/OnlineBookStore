@@ -106,7 +106,7 @@ public class DbMethod {
 			pb.setEbookPrice(rs.getDouble("ebookPrice"));
 			pb.setEbookSoldNumber(rs.getInt("ebookSoldNumber"));
 			pb.setEbookWriter(rs.getString("ebookWriter"));
-			pb.setEbookNameS(rs.getString("ebookName"));
+			pb.setEbookName(rs.getString("ebookName"));
 			objArrayL.add(pb);
 		}
 		}catch(SQLException e){
@@ -318,6 +318,39 @@ public class DbMethod {
 			pb.setObookStockNumber(rs.getInt("obookStockNumber"));
 			pb.setObookWriter(rs.getString("obookWriter"));
 			pb.setObookUpTime(rs.getString("obookUpTime"));
+			//objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		
+		return pb;
+}
+	public Ebook searchEbook(String idPbook){
+		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		String sql="select * from ebook where idebook="+idPbook;
+		System.out.println("searchPook查询语句:"+sql);
+		Ebook pb=new Ebook();
+		try{
+			ps = conn.createStatement();
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){			
+			pb.setIdebook(rs.getString("idebook"));
+			pb.setEbookAbstract(rs.getString("ebookAbstract"));
+			pb.setEbookClickTimes(rs.getInt("ebookClickTimes"));
+			pb.setEbookName(rs.getString("ebookName"));
+			pb.setEbookPictureUrl(rs.getString("ebookPictureUrl"));
+			pb.setEbookPrice(rs.getDouble("ebookPrice"));
+			pb.setEbookSoldNumber(rs.getInt("ebookSoldNumber"));
+			pb.setEbookWriter(rs.getString("ebookWriter"));
+			pb.setEbookTxtUrl(rs.getString("ebookTxtUrl"));
+			pb.setLastUpdateTime(rs.getString("lastUpdateTime"));
 			//objArrayL.add(pb);
 		}
 		}catch(SQLException e){
