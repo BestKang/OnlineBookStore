@@ -50,6 +50,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean> 
 		HttpSession session=MySession.getSession();
 		session.setAttribute("idUser", loginInfo.get(0).get("idUser"));
 		session.setAttribute("userName",loginInfo.get(0).get("userName"));
+		System.out.println("idUser:"+session.getAttribute("iduser"));
 		dataMap=new HashMap<String, Object>();
 		dataMap.put("result", "login success");
 		System.out.println("return login result:"+dataMap.get("result"));

@@ -261,30 +261,30 @@ public class DbMethod {
 			System.out.println("zheshikongde");
 		}
 		return pb;
-}	
-	/*public ArrayList<Pbook> searchPbookUrl(String idPbook){
-		ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+}
+	public Pbook searchPbook(String idPbook){
+		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
 		ResultSet rs = null;
 		Statement ps=null;
-		String sql="select * from pbook where idPbook="+idPbook+"";
+		String sql="select * from pbook where idPbook="+idPbook;
 		System.out.println("searchPook查询语句:"+sql);
+		Pbook pb=new Pbook();
 		try{
-			ps = conn.createStatement();			
+			ps = conn.createStatement();
 		 rs=ps.executeQuery(sql);
-		while(rs.next()){
-			Pbook pb=new Pbook();
+		while(rs.next()){			
 			pb.setIdPbook(rs.getString("idPbook"));
 			pb.setPbookAbstract(rs.getString("PbookAbstract"));
-			pb.setPbookClickTimes(rs.getString("PbookClickTimes"));
+			pb.setPbookClickTimes(rs.getInt("PbookClickTimes"));
 			pb.setPbookName(rs.getString("PbookName"));
 			pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
-			pb.setPbookPrice(rs.getString("PbookPrice"));
+			pb.setPbookPrice(rs.getDouble("PbookPrice"));
 			pb.setPbookPublisher(rs.getString("PbookPublisher"));
 			pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
-			pb.setPbookSoldNumber(rs.getString("PbookSoldNumber"));
-			pb.setPbookStockNumber(rs.getString("PbookStockNumber"));
+			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
+			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
 			pb.setPbookWriter(rs.getString("PbookWriter"));
-			objArrayL.add(pb);
+			//objArrayL.add(pb);
 		}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -294,8 +294,43 @@ public class DbMethod {
 			connDB.frees( ps, rs);
 		}	
 		
-		return objArrayL;
-}*/
+		return pb;
+}
+	public Obook searchObook(String idPbook){
+		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		String sql="select * from obook where idobook="+idPbook;
+		System.out.println("searchPook查询语句:"+sql);
+		Obook pb=new Obook();
+		try{
+			ps = conn.createStatement();
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){			
+			pb.setIdobook(rs.getString("idobook"));
+			pb.setObookAbstract(rs.getString("obookAbstract"));
+			pb.setObookClickTimes(rs.getInt("obookClickTimes"));
+			pb.setObookName(rs.getString("obookName"));
+			pb.setObookPictureUrl(rs.getString("obookPictureUrl"));
+			pb.setObookPrice(rs.getDouble("obookPrice"));
+			pb.setObookPublisher(rs.getString("obookPublisher"));
+			pb.setObookPublishTime(rs.getString("obookPublishTime"));
+			pb.setObookSoldNumber(rs.getInt("obookSoldNumber"));
+			pb.setObookStockNumber(rs.getInt("obookStockNumber"));
+			pb.setObookWriter(rs.getString("obookWriter"));
+			pb.setObookUpTime(rs.getString("obookUpTime"));
+			//objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		
+		return pb;
+}
 
 	public ArrayList<Comment> searchComments(Comment comm){
 		ArrayList<Comment> comms=new ArrayList<Comment>();
@@ -392,12 +427,12 @@ public class DbMethod {
 			System.out.println("Exception:属性个数和值的个数不一致");
 			return false;
 		}
-		for(int i=0;i<attr.size();i++){
+		for(int i=0;i<attr.size();i++)
 			sql+=attr.get(i).toString()+" ='"+value.get(i).toString()+"', ";
-		}
+		
 		String sql1=sql.substring(0, sql.length()-2);
 		String sql2=sql1+" "+ConditionClause;
-		System.out.println("三参数update语句:"+sql2);
+		System.out.println("四参数update语句:"+sql2);
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql2);
@@ -416,6 +451,7 @@ public class DbMethod {
 			return true;
 		return false;
 	}
+
 	public boolean update(String TableName,List attr,List value){
 		boolean flag=false;
 		String sql="update "+TableName+" set ";
@@ -428,7 +464,7 @@ public class DbMethod {
 			sql+=attr.get(i).toString()+" ='"+value.get(i).toString()+"', ";
 		}
 		String sql1=sql.substring(0, sql.length()-2);
-		System.out.println("2参数update语句:"+sql1);
+		System.out.println("三参数update语句:"+sql1);
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql1);

@@ -39,6 +39,7 @@ public class IsUserLogin extends ActionSupport  implements ModelDriven<ClientTim
 	public String isUserLoginRs(){
 		System.out.println("已响应前端查询是否登录请求,请求时间:"+this.time.getT());
 		HttpSession ses=MySession.getSession();
+		System.out.println(ses.getAttribute("idUser"));
 		if(ses.getAttribute("idUser")!=null)
 		{
 			userInfo.put("idUser",ses.getAttribute("idUser") );
@@ -50,6 +51,7 @@ public class IsUserLogin extends ActionSupport  implements ModelDriven<ClientTim
 			return SUCCESS;
 		}
 		userInfo.put("result","未登录");
+		System.out.println("22222"+ses.getAttribute("idUser"));
 		System.out.println("用户是否登录："+userInfo.get("result"));
 		return SUCCESS;
 	}
