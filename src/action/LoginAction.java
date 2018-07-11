@@ -15,7 +15,6 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import db.MySession;
 import db.Request;
-
 public class LoginAction extends ActionSupport implements ModelDriven<UserBean> {
 	private UserBean user=new UserBean();
 	private Map<String, Object> dataMap;//编码统一使用utf-8 

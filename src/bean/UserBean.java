@@ -4,10 +4,18 @@ public class UserBean {
 	private String userAccount;
 	private String userPassword;
 	private String userName;
+	private String idUser;
+	public String getIdUser() {
+		return idUser;
+	}
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
+	}
 	public UserBean(){
 		this.userAccount="初始化";
 		this.userPassword="初始化";
 		this.userName="alwjreogij";
+		this.idUser="...";
 	}
 	public String getUserName() {
 		return userName;

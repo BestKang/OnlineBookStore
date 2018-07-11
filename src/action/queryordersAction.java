@@ -9,8 +9,11 @@ import com.opensymphony.xwork2.ActionSupport;
 //import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.ModelDriven;
 
+<<<<<<< HEAD
+=======
 import bean.UserBean;
 import bean.ClientTime;
+>>>>>>> f0d026e0647074324c9fe9d09fcb6ab727952a11
 import bean.user;
 import service.BookOrdersService;
 

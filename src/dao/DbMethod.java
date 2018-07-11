@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import db.connDB;
+import bean.Comment;
 import bean.Ebook;
 import bean.Obook;
 import bean.Pbook;
@@ -364,6 +365,53 @@ public class DbMethod {
 		return pb;
 }
 
+	public ArrayList<Comment> searchComments(Comment comm){
+		ArrayList<Comment> comms=new ArrayList<Comment>();
+		ResultSet rs = null;
+		Statement ps=null;
+		String idBook1=comm.getIdbook();
+		int idBook=Integer.parseInt(idBook1);
+		String booktype=comm.getBooktype();
+		String sql="select * from bookComment where idbook ="+idBook+" and booktype='"+booktype+"'";
+		System.out.println("searchObook查询语句:"+sql);
+		try{
+			ps = conn.createStatement();
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){
+			Comment comm1=new Comment();
+			comm1.setComment(rs.getString("comment"));
+			comm1.setCommentTime(rs.getString("commentTime"));
+			comm1.setIdbook(rs.getString("idbook"));
+			comm1.setIduser(rs.getString("idUser"));
+			comm1.setBooktype(rs.getString("booktype"));
+			comms.add(comm1);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearchobook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			return null;
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		return comms;
+		
+	}
+	public boolean writeComments(Comment comm){
+		String idUser=comm.getIduser();
+		String idBook=comm.getIdbook();
+		String comment=comm.getComment();
+		String commentTime=comm.getCommentTime();
+		String booktype=comm.getBooktype();
+		System.out.println("dbMethod,writeCOmments评论内容: "+comment);
+		int idUser1=Integer.parseInt(idUser);
+		int idBook1=Integer.parseInt(idBook);
+		Object[] args={idBook1,idUser1,commentTime,comment,booktype};
+		boolean isWrite=this.insert("insert into bookComment values(?,?,?,?,?) ",args);
+		if(isWrite)
+			return true;
+		return false;
+	}
 	public  boolean insert(String sql, Object... args) {
 		PreparedStatement ps = null;
 		try {

@@ -34,8 +34,13 @@
         <action name="isLogin" method="isUserLoginRs" class="action.IsUserLogin">
             <result type="json" >
                 <param name="root">userInfo</param>
+<<<<<<< HEAD
+                </result>
+                </action>
+=======
 			 </result>
         </action>
+>>>>>>> f0d026e0647074324c9fe9d09fcb6ab727952a11
         <action name="queryorderslist" method="queryorderslist" class="action.queryordersAction">
             <result name="SUCCEESS" type="json">
                 <param name="root">map</param>
@@ -46,17 +51,29 @@
                 <param name="root">map</param>
             </result>
         </action>
+<<<<<<< HEAD
+        <action name="upLoadBook" method="upLoadBook" class="action.upLoadEbookAction">
+=======
         <action name="adminSearch" method="searchexcute" class="action.adminsearchAction">
+>>>>>>> f0d026e0647074324c9fe9d09fcb6ab727952a11
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
+<<<<<<< HEAD
+         <action name="showComments" method="showComments" class="action.showCommentsAction">
+=======
         <action name="adminAdd" method="addExcute" class="action.adminAddAction">
+>>>>>>> f0d026e0647074324c9fe9d09fcb6ab727952a11
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
+<<<<<<< HEAD
+         <action name="writeComments" method="writeComments" class="action.writeCommentsAction">
+=======
         <action name="adminUpdate" method="updateExcute" class="action.adminAddAction">
+>>>>>>> f0d026e0647074324c9fe9d09fcb6ab727952a11
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
