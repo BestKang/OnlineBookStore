@@ -35,7 +35,8 @@ public class writeCommentsAction extends ActionSupport implements ModelDriven<Co
 		return this.comm;
 	}
 	public String writeComments(){
-		System.out.println("已响应前端写评论请求...iduser为:"+comm.getIduser()+"  idbook为:"+comm.getIdbook()+" comment为:"+comm.getComment()+"  commentTime为:"+comm.getCommentTime()+" booktype为:"+comm.getBooktype());
+		System.out.println("已响应前端写评论请求...iduser为:"+comm.getIduser()+"  idbook为:"+comm.getIdbook()+
+				" comment为:"+comm.getComment()+"  commentTime为:"+comm.getCommentTime()+" booktype为:"+comm.getBooktype());
 		Comments comms=new Comments();
 		if(!comms.writeComments(comm))
 		{

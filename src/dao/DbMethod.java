@@ -362,7 +362,6 @@ public ArrayList<Obook> searchobookbyname(String name){
 		return pb;
 }
 	public Pbook searchPbook(String idPbook){
-		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
 		ResultSet rs = null;
 		Statement ps=null;
 		String sql="select * from pbook where idPbook="+idPbook;
