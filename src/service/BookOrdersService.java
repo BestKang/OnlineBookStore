@@ -34,14 +34,17 @@ public class BookOrdersService {
 		this.bookorders=null;
 	}
 	public ArrayList<Map<String,Object>> getorderlist(user user){
-		System.out.println("获取订单列表之前");
+		System.out.println(2222);
 		try {
 			bookorders=(bookorders)dao2.getObject("bean.bookorders", "idUser", user.getIdUser());
-			System.out.println("获取订单列表之后：");
+			System.out.println(333);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		
+
 
 		Map<String,Object> MapObj=new HashMap<String,Object>();
 		MapObj.put("order", bookorders);
@@ -55,13 +58,16 @@ public class BookOrdersService {
 	public ArrayList<Map<String,Object>> getOrderList(user user){
 		//System.out.println(2222);
 		List<Object> list = new ArrayList<Object>();
+
 		
-		//List<Object> list2 = new ArrayList<Object>();		
-		//List<Object> list4 = new ArrayList<Object>();
+		List<Object> list2 = new ArrayList<Object>();
+		
+		List<Object> list4 = new ArrayList<Object>();
 		
 		Map<String,Object> MapObj=new HashMap<String,Object>();
 		
 		ArrayList<Map<String,Object>> arrayList = new ArrayList<Map<String,Object>>();
+
 
 		try {
 			list=dao2.getObjectList("bean.bookorders", "idUser", user.getIdUser());
@@ -71,8 +77,9 @@ public class BookOrdersService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//Map<String,Object> MapObj=new HashMap<String,Object>();
 		MapObj.put("order", list);
-		arrayList.add(MapObj);
+
 	/*	
 		DbMethod db=new DbMethod();
 		for (int i = 0; i < list.size(); i++) {
@@ -101,14 +108,32 @@ public class BookOrdersService {
 			System.out.println("测试输出Obook");
 			MapObj.put("ObookUrl", list4);
 		}
-		*/		
+		*/
 		
+		arrayList.add(MapObj);
+		List<Object> list3=(List<Object>)arrayList.get(0).get("order");
+		bookorders bd=(bookorders)list3.get(0);
+		System.out.println(bd.getBookName()+bd.getPictureUrl());
+		//List<Object> list3=(List<Object>)arrayList.get(0).get("Url");
+		//
+		//Pbook pb=(Pbook)list3.get(0);
+		//System.out.println(bd.getBookName());
+		//System.out.println(pb.getPbookPictureUrl());
+
+
+	/*	ArrayList<Map<String,Object>> arrayList = new ArrayList<Map<String,Object>>();
+		arrayList.add(MapObj);
+		//System.out.println(bookorders.getBookName());
+		List<Object> list2=(List<Object>)arrayList.get(0).get("order");
+		bookorders order=(bookorders)list2.get(1);
+		System.out.println(arrayList.get(0));
+		System.out.println("测试输出："+order.getBookName());
+*/
 		return arrayList;
 	}
 	
 	
-	public boolean insertpbookorder(Pbook pbook,user user,int number,String rcname) {//根据书籍信息id，用户信息 id，购买数量，收货人
-																					//生成订单
+	public boolean insertpbookorder(Pbook pbook,user user,int number,String rcname) {
 		DbMethod db=new DbMethod();
 		
 		String idUser=user.getIdUser();
@@ -140,7 +165,7 @@ public class BookOrdersService {
 		System.out.println("购买前");
 		
 		//db.setAutoCommit(false); //开启事务，相当于  start transaction;
-		db.setAutoCommit();
+
 		
 		String sql="insert into bookorders(finishTime,idUser,bookId,bookName,bookNumber,cost,shippingAddress,receiverName,booktype,pictureUrl) values(?,?,?,?,?,?,?,?,?,?)";
 		
@@ -157,7 +182,6 @@ public class BookOrdersService {
 		String sql2="update pbook set PbookStockNumber='"+n+"',PbookSoldNumber='"+m+"' where idPbook ='"+pbook.getIdPbook()+"'";
 		
 		boolean isUpdate=db.update(sql2);
-		db.commit();
 		if (!isUpdate) {
 			return false;
 		}

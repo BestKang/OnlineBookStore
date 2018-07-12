@@ -23,9 +23,7 @@ public class Comments {
 		return false;
 	}
 	public ArrayList<Comment> getComments(Comment comm){
-		dm.setAutoCommit();
 		ArrayList<Comment> comms=dm.searchComments(comm);
-		dm.commit();
 		return comms;
 	}
 

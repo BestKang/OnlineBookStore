@@ -26,7 +26,6 @@ public class DbMethod {
 	}
 	public ArrayList<Map<String,Object>> search(String sql,int attrNum,String... names ) {//String... argsΪ为不定长参数，即有多少个参数不确定,attrNum为查询语句中属性个数
 		// TODO Auto-generated method stub
-		
 		ResultSet rs = null;
 		ArrayList<Map<String,Object>> objArrayL=new ArrayList<Map<String,Object>>();
 		Statement ps=null;
@@ -108,7 +107,7 @@ public class DbMethod {
 			pb.setEbookPrice(rs.getDouble("ebookPrice"));
 			pb.setEbookSoldNumber(rs.getInt("ebookSoldNumber"));
 			pb.setEbookWriter(rs.getString("ebookWriter"));
-			pb.setEbookName(rs.getString("ebookName"));
+			pb.setEbookNameS(rs.getString("ebookName"));
 			objArrayL.add(pb);
 		}
 		}catch(SQLException e){
@@ -175,7 +174,7 @@ public class DbMethod {
 			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
 			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
 			pb.setPbookWriter(rs.getString("PbookWriter"));
-			topList.add(pb); 
+			topList.add(pb);
 		}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -320,39 +319,6 @@ public class DbMethod {
 			pb.setObookStockNumber(rs.getInt("obookStockNumber"));
 			pb.setObookWriter(rs.getString("obookWriter"));
 			pb.setObookUpTime(rs.getString("obookUpTime"));
-			//objArrayL.add(pb);
-		}
-		}catch(SQLException e){
-			e.printStackTrace();
-			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
-			
-		}finally{
-			connDB.frees( ps, rs);
-		}	
-		
-		return pb;
-}
-	public Ebook searchEbook(String idPbook){
-		//ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
-		ResultSet rs = null;
-		Statement ps=null;
-		String sql="select * from ebook where idebook="+idPbook;
-		System.out.println("searchPook查询语句:"+sql);
-		Ebook pb=new Ebook();
-		try{
-			ps = conn.createStatement();
-		 rs=ps.executeQuery(sql);
-		while(rs.next()){			
-			pb.setIdebook(rs.getString("idebook"));
-			pb.setEbookAbstract(rs.getString("ebookAbstract"));
-			pb.setEbookClickTimes(rs.getInt("ebookClickTimes"));
-			pb.setEbookName(rs.getString("ebookName"));
-			pb.setEbookPictureUrl(rs.getString("ebookPictureUrl"));
-			pb.setEbookPrice(rs.getDouble("ebookPrice"));
-			pb.setEbookSoldNumber(rs.getInt("ebookSoldNumber"));
-			pb.setEbookWriter(rs.getString("ebookWriter"));
-			pb.setEbookTxtUrl(rs.getString("ebookTxtUrl"));
-			pb.setLastUpdateTime(rs.getString("lastUpdateTime"));
 			//objArrayL.add(pb);
 		}
 		}catch(SQLException e){
@@ -522,26 +488,6 @@ public class DbMethod {
 			if(!this.conn.isClosed()){
 				this.conn.close();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public Connection getConnection(){
-		return conn;
-		
-	}
-	public void setAutoCommit(){
-		try {
-			conn.setAutoCommit(false);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public void commit(){
-		try {
-			conn.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

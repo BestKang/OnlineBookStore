@@ -22,6 +22,7 @@ public class user {
 		this.userName="用户名";
 		this.userPhone="手机号";
 		this.userPictureUrl="用户图片路径";
+		this.idUser="..";
 	}
 	public String getIdUser() {
 		return idUser;

@@ -35,12 +35,9 @@ public class operatebookservice {
 		Object[] args={pbookName,pbookWriter,pbookPublisher,pbookPublishTime,pbookPrice,pbookStockNumber,pbookSoldNumber,pbookAbstract,pbookPictureUrl,pbookClickTimes};
 		String sql="insert into pbook(pbookName,pbookWriter,pbookPublisher,pbookPublishTime,pbookPrice,pbookStockNumber,pbookSoldNumber,pbookAbstract,pbookPictureUrl,pbookClickTimes) "+
 		"values(?,?,?,?,?,?,?,?,?,?)";
-		db.setAutoCommit();
 		if (db.insert(sql, args)) {
-			db.commit();
 			return true;
-		}
-		db.commit();
+		}		
 		return false;
 	}
 
@@ -81,12 +78,9 @@ public class operatebookservice {
 		value.add(pbookAbstract);
 		value.add(pbookPictureUrl);
 		value.add(String.valueOf(pbookClickTimes));
-		db.setAutoCommit();
 		if (db.update("pbook", attr, value, "where idPbook='"+pbook.getIdPbook()+"'")) {
-			db.commit();
 			return true;
 		}
-		db.commit();
 		/*if (db.update(sql)) {
 			return true;
 		}	*/	
@@ -101,12 +95,9 @@ public class operatebookservice {
 	public boolean DeletePBook(String id){//实体书下架库存清零
 			
 		String sql="update pbook set pbookStockNumber='"+0+"' where idPbook='"+id+"'";
-		db.setAutoCommit();
 		if (db.update(sql)) {
-			db.commit();
 			return true;
 		}		
-		db.commit();
 		return false;
 	}
 	
@@ -125,13 +116,9 @@ public class operatebookservice {
 		Object[] args={pbookName,pbookWriter,pbookPublisher,pbookPublishTime,pbookPrice,pbookStockNumber,pbookSoldNumber,pbookAbstract,pbookPictureUrl,pbookClickTimes,obookUpTime};
 		String sql="insert into obook(obookName,obookWriter,obookPublisher,obookPublishTime,obookPrice,obookStockNumber,obookSoldNumber,obookAbstract,obookPictureUrl,obookClickTimes,obookUpTime) "+
 		"values(?,?,?,?,?,?,?,?,?,?,?)";
-		db.setAutoCommit();
 		if (db.insert(sql, args)) {
-			db.commit();
-			
 			return true;
-		}
-		db.commit();
+		}		
 		return false;
 	}
 
@@ -171,13 +158,9 @@ public class operatebookservice {
 		value.add(pbookPictureUrl);
 		value.add(String.valueOf(pbookClickTimes));
 		value.add(obookUpTime);
-		db.setAutoCommit();
 		if (db.update("obook", attr, value, "where idobook='"+obook.getIdobook()+"'")) {
-			db.commit();
 			return true;
 		}
-		db.commit();
-		
 		/*if (db.update(sql)) {
 			return true;
 		}	*/	
@@ -192,12 +175,9 @@ public class operatebookservice {
 	public boolean DeleteOBook(String id){//二手书下架库存清零
 			
 		String sql="update obook set obookStockNumber='"+0+"' where idobook='"+id+"'";
-		db.setAutoCommit();
 		if (db.update(sql)) {
-			db.commit();
 			return true;
-		}	
-		db.commit();
+		}		
 		return false;
 	}
 }

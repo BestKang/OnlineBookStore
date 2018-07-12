@@ -90,7 +90,7 @@ public class getBookList {
 		map.put("ebookPrice", ob.getEbookPrice());
 		map.put("ebookSoldNumber", ob.getEbookSoldNumber());
 		map.put("ebookWriter", ob.getEbookWriter());
-		map.put("ebookName", ob.getEbookName());
+		map.put("ebookName", ob.getEbookNameS());
 		return map;
 }
 }
