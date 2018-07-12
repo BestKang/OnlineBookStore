@@ -33,6 +33,13 @@ public class shoppingAction extends ActionSupport{
 	String pbookAbstract;
 	String pbookPictureUrl;
 	int pbookClickTimes;
+	String userAddress;
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
 	String idUser;
     user user=new user();
 	int number;
@@ -160,7 +167,8 @@ public class shoppingAction extends ActionSupport{
 		pbook.setPbookSoldNumber(pbookSoldNumber);
 		pbook.setPbookStockNumber(pbookStockNumber);
 		pbook.setPbookWriter(pbookWriter);
-		user.setIdUser(idUser);				
+		user.setIdUser(idUser);
+		user.setUserAddress(userAddress);
 		if (bookOrdersService.insertpbookorder(pbook, user, number, rcname)) {
 			map.put("shoppingResult", "成功");
 			return "success";

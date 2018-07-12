@@ -26,6 +26,28 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 	String pbookName;
 	user user=new user();
 	double pbookPrice;
+	String pbookPictureUrl;
+	String idUser;   
+	int number;
+	String rcname;
+	private String userAddress;
+	public BusketBean getBsk() {
+		return bsk;
+	}
+
+	public void setBsk(BusketBean bsk) {
+		this.bsk = bsk;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	
 	public Pbook getPbook() {
 		return pbook;
 	}
@@ -98,10 +120,6 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 		this.rcname = rcname;
 	}
 
-	String pbookPictureUrl;
-	String idUser;   
-	int number;
-	String rcname;
 	
 	public Map<String, Object> getDataMap() {
 		return dataMap;

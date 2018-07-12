@@ -1,6 +1,7 @@
 package action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import service.operatebookservice;
@@ -36,15 +37,16 @@ public class adminsearchAction extends ActionSupport{
 	}
 	public String searchexcute(){
 		DbMethod dbMethod=new DbMethod();
+		dataMap = new HashMap<String, Object>();
 		Pbook pbook=dbMethod.searchPbook(idPbook);
 		dataMap.put("Pbook", pbook);
 		return SUCCESS;
 	}
 	public String searchbookbynameexcute(){     						//通过页面传入的书名bookname查询书籍，查询范围包括实体书、电子书、二手书
 		operatebookservice operatebookservice=new operatebookservice();
+		dataMap = new HashMap<String, Object>();
 		DbMethod dbMethod=new DbMethod();										//dataMap.put("EBookList",EBookList);
-																				//dataMap.put("PBookList",PBookList);
-																				//dataMap.put("OBookList",OBookList);
+																				//dataMap.put("PBookList",PBookList);																				//dataMap.put("OBookList",OBookList);
 		List<Map<String,Object>> EBookList=new ArrayList<Map<String,Object>>();
 		EBookList=operatebookservice.getbook(this.bookname);								//分别调用获取电子书，实体书，二手书的方法获取
 		List<Map<String,Object>> PBookList=new ArrayList<Map<String,Object>>();

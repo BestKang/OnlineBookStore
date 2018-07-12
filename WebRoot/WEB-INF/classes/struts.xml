@@ -6,77 +6,87 @@
 <!-- START SNIPPET: xworkSample -->
 <struts>
     <package name="default" namespace="/" extends="json-default">  
-    <action name="login" method="LoginExcute" class="action.LoginAction">
+    <action name="login" method="LoginExcute" class="action.LoginAction">            <!-- 登录 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-        <action name="register" method="RegisterExcute" class="action.registerAction">
+        <action name="register" method="RegisterExcute" class="action.registerAction">    <!-- 注册 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-         <action name="bookList" method="bookListRs" class="action.bookListAction">
+         <action name="bookList" method="bookListRs" class="action.bookListAction">			<!-- 获取书籍列表 -->
             <result type="json">
                 <param name="root">map</param>
             </result>
         </action>
-        <action name="userCenterUpdate" method="userCenterRs" class="action.userCenterAction">
+        <action name="userCenterUpdate" method="userCenterRs" class="action.userCenterAction">     <!-- 更新个人信息 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-        <action name="hhh" method="hh" class="action.upLoadUserPicAction">
+        <action name="hhh" method="hh" class="action.upLoadUserPicAction">            <!-- 上传头像 -->
             <result type="json">
                 <param name="root">result</param><!-- 这个action为测试用 -->
             </result>
         </action>
-        <action name="isLogin" method="isUserLoginRs" class="action.IsUserLogin">
+        <action name="isLogin" method="isUserLoginRs" class="action.IsUserLogin">			<!-- 保持登录状态 -->
             <result type="json" >
                 <param name="root">userInfo</param>
                 </result>
                 </action>
-        <action name="queryorderslist" method="queryorderslist" class="action.queryordersAction">
+        <action name="queryorderslist" method="queryorderslist" class="action.queryordersAction">		<!-- 订单查看 -->
             <result name="success" type="json">
                 <param name="root">map</param>
             </result>
         </action>
-        <action name="shopping" method="shopping" class="action.shoppingAction">
+        <action name="shopping" method="shopping" class="action.shoppingAction">					<!-- 单个商品直接购买 -->
             <result type="json">
                 <param name="root">map</param>
             </result>
         </action>
-      <action name="upLoadBook" method="upLoadBook" class="action.upLoadEbookAction">
+      <action name="upLoadBook" method="upLoadBook" class="action.upLoadEbookAction">		<!-- 电子书上传 -->
        <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-        <action name="adminSearch" method="searchexcute" class="action.adminsearchAction">
+        <action name="adminSearch" method="searchexcute" class="action.adminsearchAction">	<!--单本实体书查询  -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-        <action name="Search" method="searchbookbynameexcute" class="action.adminsearchAction">
+        <action name="Search" method="searchbookbynameexcute" class="action.adminsearchAction"> <!-- 通过书名模糊搜索书籍 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-       <action name="showComments" method="showComments" class="action.showCommentsAction">
+       <action name="showComments" method="showComments" class="action.showCommentsAction">		<!-- 展示评论 -->
         <result type="json">
                 <param name="root">dataMap</param>
             </result>
-        </action>
-        <action name="adminAdd" method="addExcute" class="action.adminAddAction">
+        </action>	
+        <action name="adminAdd" method="addExcute" class="action.adminAddAction">					<!-- 添加实体书 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-        <action name="writeComments" method="writeComments" class="action.writeCommentsAction">
+        <action name="addobook" method="addobookExcute" class="action.addobookAction">		<!-- 添加二手书 -->
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        <action name="writeComments" method="writeComments" class="action.writeCommentsAction">					<!-- 书写评论 -->
          <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-        <action name="adminUpdate" method="updateExcute" class="action.adminAddAction">
+        <action name="adminUpdate" method="updateExcute" class="action.adminAddAction">				<!-- 更新实体书 -->
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        <action name="Updateobook" method="updateExcute" class="action.addobookAction">				<!-- 更新二手书 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
