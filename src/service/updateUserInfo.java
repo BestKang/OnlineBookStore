@@ -2,9 +2,9 @@ package service;
 import java.util.ArrayList;
 import java.util.Map;
 
-import dao.Dao;
+
 import dao.DbMethod;
-import dao.GenericityDao;
+
 import bean.UserBean;
 import bean.NewUserBean;
 public class updateUserInfo {

@@ -29,4 +29,10 @@ public class Administrator {
 	public void setFlag(String flag) {
 		this.flag = flag;
 	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	
 }

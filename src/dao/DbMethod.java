@@ -26,6 +26,7 @@ public class DbMethod {
 	}
 	public ArrayList<Map<String,Object>> search(String sql,int attrNum,String... names ) {//String... argsΪ为不定长参数，即有多少个参数不确定,attrNum为查询语句中属性个数
 		// TODO Auto-generated method stub
+		
 		ResultSet rs = null;
 		ArrayList<Map<String,Object>> objArrayL=new ArrayList<Map<String,Object>>();
 		Statement ps=null;
@@ -174,7 +175,7 @@ public class DbMethod {
 			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
 			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
 			pb.setPbookWriter(rs.getString("PbookWriter"));
-			topList.add(pb);
+			topList.add(pb); 
 		}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -521,6 +522,26 @@ public class DbMethod {
 			if(!this.conn.isClosed()){
 				this.conn.close();
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public Connection getConnection(){
+		return conn;
+		
+	}
+	public void setAutoCommit(){
+		try {
+			conn.setAutoCommit(false);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void commit(){
+		try {
+			conn.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

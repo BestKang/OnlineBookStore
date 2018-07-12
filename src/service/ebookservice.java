@@ -34,9 +34,12 @@ public class ebookservice {
 		Object[] args={pbookName,pbookWriter,pbookAbstract,pbookPictureUrl,pbookClickTimes,pbookPrice,pbookSoldNumber,txtUrl,lastUpdateTime};
 		String sql="insert into ebook(ebookName,ebookWriter,ebookAbstract,ebookPictureUrl,ebookClickTimes,ebookPrice,ebookSoldNumber,ebookTxtUrl,lastUpdateTime) "+
 		"values(?,?,?,?,?,?,?,?,?)";
+		db.setAutoCommit();
 		if (db.insert(sql, args)) {
+			db.commit();
 			return true;
-		}		
+		}
+		db.commit();
 		return false;
 	}
 
@@ -73,17 +76,21 @@ public class ebookservice {
 		value.add(String.valueOf(pbookSoldNumber));
 		value.add(txtUrl);
 		value.add(lastUpdateTime);
-			
+		db.setAutoCommit();	
 		if (db.update("ebook", attr, value, "where idebook='"+ebook.getIdebook()+"'")) {
+			db.commit();
 			return true;
 		}
+		db.commit();
 		/*if (db.update(sql)) {
 			return true;
 		}	*/	
 		return false;
 	}
 	public Ebook searchEbook(String idpbook){//查找一本实体书信息
+		db.setAutoCommit();
 		Ebook pbook =db.searchEbook(idpbook);
+		db.commit();
 		return pbook;
 	}
 	

@@ -82,5 +82,9 @@
                 <param name="root">dataMap</param>
             </result>
         </action>
+        
+        <action name="upload" class="action.UploadAction">  <!--测试用-->
+            <result>/uploadSuccess.jsp</result>
+        </action>
     </package>
 </struts>
