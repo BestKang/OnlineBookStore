@@ -15,14 +15,12 @@
         }
     </style>
     <script>
-		var ebookList;
-			var ebookList;
-			var obookList;
-			var pbookListHtml="";
-			var topList;
-			var isLogin="";
 		$(document).ready(function(){
 			/*****************************页面初始化获取列表数据以及检测是否登录******************************/
+			 EbookList=[];
+			 ObookList=[];
+			 pbookListHtml="";
+			 isLogin="";
 			$.ajax({
 			type:"POST",
 			url:"isLogin?t="+new Date().getTime(),
@@ -49,14 +47,16 @@
 				cache:false, 
 				dataType:"json",
 				success:function(data){
-				alert("成功返回");
-					ebookList=data.EBookList;
-					obookList=data.OBookList;
-					topList=data.SoldTopList;
+				//alert("成功返回");
+					EbookList=data.EBookList;
+					ObookList=data.OBookList;
+					//topList=data.SoldTopList;
+					//alert("EbookList:"+EbookList.length);
+					//alert("ObookList:"+ObookList.length);
+					//alert("data 方式OBookList:"+data.OBookList.length);
+					//alert("data 方式:"+data.PBookList.length);
 					var topHtml="";
 					$("#topBookList").html("");
-					var ebookList="";
-					var obookList="";
 					var pbookList="";
 					$("#bookDisplay").html("");
 					$.each(data.SoldTopList,function(i,values){//排行榜
@@ -71,9 +71,8 @@
                     "</li>";
 					})
 					$("#topBookList").html(topHtml);
-					$.each(data.PBookList,function(i,values){//实体书列表,初始化加载时默认为实体书列表
-					
-						
+					$.each(data.PBookList,function(i,values){
+					//实体书列表,初始化加载时默认为实体书列表
 						pbookList+='<article class="excerpt excerpt-1">'+
                    '<a class="focus" href="detail.html?bookId="'+values.idPbook+'" title="'+values.PbookName+'" target="_blank" >'+
                         '<img class="thumb" src="img/'+values.PbookPictureUrl+'" alt="'+values.PbookName+'"  style="display: inline;">'+
@@ -90,13 +89,12 @@
                     "</p>"+
                    '<p class="pull-right" style="margin-left: 10px">'+
                         '<a class="comment" href="./list.html?bookId='+values.idPbook+'" title="加入购物车"'+ 'target="_blank"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</a>'+
-                    "</p>"+
-                    "<p"+ 'class="note">'+values.PbookAbstract+"</p>"+
+                    "</p><p "+ 'class="note">'+values.PbookAbstract+"</p>"+
                 "</article>";
 					})
-					
-					$("#bookDisplay").html(PbookList);
-					pbookListHtml=PbookList;
+					//alert("PbookHtmlstring:"+pbookList);
+					$("#bookDisplay").html(pbookList);
+					pbookListHtml=pbookList;
 				},
 				error:function(xhr){
 					alert("error--"+xhr.resoponseText);
@@ -106,28 +104,29 @@
 		
 		
 		$("#ebook").click(function(){//点击电子书，展示电子书列表
-				var ebookListhtml="";
+				var ebookListHtml="";
 				$("#bookDisplay").html("");
 				$("#bookType").html("电子书");
-				$.each(ebookList,function(i,values){//实体书列表,初始化加载时默认为实体书列表
+			//	alert(EbookList.length);
+				$.each(EbookList,function(i,values){//实体书列表,初始化加载时默认为实体书列表
 						ebookListHtml+='<article class="excerpt excerpt-1">'+
-                   '<a class="focus" href="detail.html?bookId="'+values.idPbook+'" title="'+values.PbookName+'" target="_blank" >'+
-                        '<img class="thumb" src="img/'+values.PbookPictureUrl+'" alt="'+values.PbookName+'"  style="display: inline;">'+
+                   '<a class="focus" href="detail.html?bookId="'+values.idebook+'" title="'+values.ebookName+'" target="_blank" >'+
+                        '<img class="thumb" src="img/'+values.ebookPictureUrl+'" alt="'+values.ebookName+'"  style="display: inline;">'+
                     "</a>"+
                     "<header>"+
                         "<h2>"+
-                            '<a href="./detail.html?bookId="'+values.idPbook+'" title="'+values.PbookName+'" target="_blank" >'+values.PbookName+"</a>"+
+                            '<a href="./detail.html?bookId="'+values.idebook+'" title="'+values.ebookName+'" target="_blank" >'+values.ebookName+"</a>"+
                         "</h2>"+
                     "</header>"+
                     "<br />"+
                     '<p class="meta">'+
                         '<span class="views"><i class="glyphicon glyphicon-eye-open"></i>'+ "217"+"</span>"+
-                        '<a class="comment" href="./detail.html?bookId='+values.idPbook+'" title="评论"'+ 'target="_blank" ><i class="glyphicon glyphicon-comment"></i>'+ "4"+"</a>"+
+                        '<a class="comment" href="./detail.html?bookId='+values.idebook+'" title="评论"'+ 'target="_blank" ><i class="glyphicon glyphicon-comment"></i>'+ "4"+"</a>"+
                     "</p>"+
                    '<p class="pull-right" style="margin-left: 10px">'+
-                        '<a class="comment" href="./list.html?bookId='+values.idPbook+'" title="加入购物车"'+ 'target="_blank"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</a>'+
+                        '<a class="comment" href="./list.html?bookId='+values.idebook+'" title="加入购物车"'+ 'target="_blank"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</a>'+
                     "</p>"+
-                    "<p"+ 'class="note">'+values.PbookAbstract+"</p>"+
+                    "<p"+ 'class="note">'+values.ebookAbstract+"</p>"+
                 "</article>";
 					})
 				$("#bookDisplay").html(ebookListHtml);
@@ -137,28 +136,29 @@
 		
 		
 		$("#obook").click(function(){//点击二手书，展示二手书列表
-				var obookListhtml="";
+				var obookListHtml="";
 				$("#bookType").html("二手书");
 				$("#bookDisplay").html("");
-				$.each(obookList,function(i,values){//实体书列表,初始化加载时默认为实体书列表
+			//	alert("二手书:"+ObookList[0].obookName);
+				$.each(ObookList,function(i,values){//实体书列表,初始化加载时默认为实体书列表
 						obookListHtml+='<article class="excerpt excerpt-1">'+
-                   '<a class="focus" href="detail.html?bookId="'+values.idPbook+'" title="'+values.PbookName+'" target="_blank" >'+
-                        '<img class="thumb" src="img/'+values.PbookPictureUrl+'" alt="'+values.PbookName+'"  style="display: inline;">'+
+                   '<a class="focus" href="detail.html?bookId="'+values.idobook+'" title="'+values.obookName+'" target="_blank" >'+
+                        '<img class="thumb" src="img/'+values.obookPictureUrl+'" alt="'+values.obookName+'"  style="display: inline;">'+
                     "</a>"+
                     "<header>"+
                         "<h2>"+
-                            '<a href="./detail.html?bookId="'+values.idPbook+'" title="'+values.PbookName+'" target="_blank" >'+values.PbookName+"</a>"+
+                            '<a href="./detail.html?bookId="'+values.idobook+'" title="'+values.obookName+'" target="_blank" >'+values.obookName+"</a>"+
                         "</h2>"+
                     "</header>"+
                     "<br />"+
                     '<p class="meta">'+
                         '<span class="views"><i class="glyphicon glyphicon-eye-open"></i>'+ "217"+"</span>"+
-                        '<a class="comment" href="./detail.html?bookId='+values.idPbook+'" title="评论"'+ 'target="_blank" ><i class="glyphicon glyphicon-comment"></i>'+ "4"+"</a>"+
+                        '<a class="comment" href="./detail.html?bookId='+values.idobook+'" title="评论"'+ 'target="_blank" ><i class="glyphicon glyphicon-comment"></i>'+ "4"+"</a>"+
                     "</p>"+
                    '<p class="pull-right" style="margin-left: 10px">'+
-                        '<a class="comment" href="./list.html?bookId='+values.idPbook+'" title="加入购物车"'+ 'target="_blank"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</a>'+
+                        '<a class="comment" href="./list.html?bookId='+values.idobook+'" title="加入购物车"'+ 'target="_blank"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</a>'+
                     "</p>"+
-                    "<p"+ 'class="note">'+values.PbookAbstract+"</p>"+
+                    "<p"+ 'class="note">'+values.obookAbstract+"</p>"+
                 "</article>";
 					})
 					$("#bookDisplay").html(obookListHtml);
@@ -169,9 +169,9 @@
 		
 		
 			$("#pbook").click(function(){//点击实体书，展示实体书列表
-				$("bookDisplay").html("");
+				$("#bookDisplay").html("");
 				$("#bookType").html("实体书");
-				$("bookDisplay").html(pbookListHtml);
+				$("#bookDisplay").html(pbookListHtml);
 			})
 		
 			/***********************************************************/
@@ -192,6 +192,26 @@
 			}
 		})
 		})
+		
+				$("#reg").click(function(){//点击注册
+				if($("#userPassword").val()!=$("#reUserPassword").val()){
+					alert("两次输入密码不一致!");
+					return false;
+				}
+		$.ajax({
+			type:"POST",
+			url:"register?t="+new Date().getTime(),
+			data:$("#registerForm").serialize(),
+			dataType:"json",
+			cache:false,
+			success:function(data){
+				alert(data["RegisterResult"]);
+			},
+			error:function(xhr){
+				alert("error: "+xhr.responseText);
+			}
+		})
+	})
 
 		
 		})
@@ -319,9 +339,9 @@
         <aside  class="sidebar">
             <div class="fixed">
                 <div class="widget widget_search">
-                    <form class="navbar-form" action="SearchResult.html" method="get">
+                    <form class="navbar-form" action="Search" method="post">
                         <div class="input-group">
-                            <input type="text" name="bookName" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">
+                            <input type="text" name="bookname" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">
                             <span class="input-group-btn"><button class="btn btn-default btn-search" type="submit">搜索</button></span>
                         </div>
                     </form>
@@ -357,7 +377,7 @@
 
 
 
-    <div id="register" class="modal fade" tabindex="-1">
+   <div id="register" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -369,25 +389,33 @@
                     <h1 class="text-center">注册</h1>
                 </div>
                 <div class="modal-body">
-                    <form class="form-group" action="">
+                    <form class="form-group"  id="registerForm">
                         <div class="form-group">
                             <label for="">用户名</label>
-                            <input class="form-control required" type="text" placeholder="6-15位字母或数字">
+                            <input class="form-control required" name="userName" id="userName" type="text" placeholder="6-15位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">账号</label>
+                            <input class="form-control required" name="userAccount" id="userAccount" type="text" placeholder="6-15位字母或数字">
                         </div>
                         <div class="form-group">
                             <label for="">密码</label>
-                            <input class="form-control required" type="password" placeholder="至少6位字母或数字">
+                            <input class="form-control required" type="password" name="userPassword" id="userPassword" placeholder="至少6位字母或数字">
                         </div>
                         <div class="form-group">
                             <label for="">再次输入密码</label>
-                            <input class="form-control required" type="password" placeholder="至少6位字母或数字">
+                            <input class="form-control required" type="password" id="reUserPassword" placeholder="至少6位字母或数字">
                         </div>
                         <div class="form-group">
-                            <label for="">邮箱</label>
-                            <input class="form-control required" type="email" placeholder="例如:123@123.com">
+                            <label for="">电话</label>
+                            <input class="form-control required" type="email" name="userPhone" id="userPhone" placeholder="输入你的联系电话">
+                        </div>
+                         <div class="form-group">
+                            <label for="">地址</label>
+                            <input class="form-control required" type="email" name="userAddress" id="userAddress" placeholder="输入你的地址">
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-primary" type="submit" id="reg">提交</button>
+                            <input class="btn btn-primary" type="button" id="reg" value="注册">
                             <button class="btn btn-danger" data-dismiss="modal">取消</button>
                         </div>
                          <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
@@ -409,14 +437,14 @@
                     <h1 class="text-center">登录</h1>
                 </div>
                 <div class="modal-body">
-                    <form class="form-group" >
+                    <form class="form-group" id="loginForm" >
                         <div class="form-group">
-                            <label for="">用户名</label>
-                            <input class="form-control" type="text" placeholder="" id="username">
+                            <label for="">账号</label>
+                            <input class="form-control" type="text" name="userAccount" placeholder="" id="username">
                         </div>
                         <div class="form-group">
                             <label for="">密码</label>
-                            <input class="form-control" type="password" placeholder="" id="password">
+                            <input class="form-control" name="userPassword" type="password" placeholder="" id="password">
                         </div>
                         <div class="text-right">
                             <button class="btn btn-primary"  id="log">登录</button>

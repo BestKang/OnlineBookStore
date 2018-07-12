@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import bean.ClientTime;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -40,7 +39,7 @@ public class IsUserLogin extends ActionSupport  implements ModelDriven<ClientTim
 	public String isUserLoginRs(){
 		System.out.println("已响应前端查询是否登录请求,请求时间:"+this.time.getT());
 		HttpSession ses=MySession.getSession();
-		System.out.println("IsUserLogin中session存的idUser："+ses.getAttribute("idUser"));
+		System.out.println(ses.getAttribute("idUser"));
 		if(ses.getAttribute("idUser")!=null)
 		{
 			userInfo.put("idUser",ses.getAttribute("idUser") );
