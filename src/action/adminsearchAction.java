@@ -51,9 +51,22 @@ public class adminsearchAction extends ActionSupport{
 		PBookList=operatebookservice.getPBookList(this.bookname);
 		List<Map<String,Object>> OBookList=new ArrayList<Map<String,Object>>();
 		OBookList=operatebookservice.getOBookList(this.bookname);
-		dataMap.put("EBookList",EBookList);
-		dataMap.put("PBookList",PBookList);										//添加到传给前端的数据中去
-		dataMap.put("OBookList",OBookList);
+		//System.out.println(EBookList.size());
+		if(EBookList!=null){
+			dataMap.put("EBookList",EBookList);
+		}
+		else dataMap.put("EBookList","电子书中无该书空");
+		if(PBookList.size()>0){
+			dataMap.put("PBookList",PBookList);
+		}
+		else
+			dataMap.put("PBookList","实体书中无该书");
+		if(OBookList.size()>0){
+			//添加到传给前端的数据中去
+			dataMap.put("OBookList",OBookList);
+		}else
+			dataMap.put("OBookList","二手书中无该书");
+		
 		//dataMap.put("Pbook", pbook);
 		return SUCCESS;
 	}

@@ -101,6 +101,7 @@ public class operatebookservice {
 	public ArrayList<Map<String,Object>> getbook(String name){//电子书
 		ArrayList<Map<String,Object>> eBookList=new ArrayList<Map<String,Object>>();
 		ArrayList<Ebook> eb=db.searchebookByName(name);
+		if(eb.size()==0) return null;
 		for(int i=0;i<eb.size();i++){
 			eBookList.add(this.ClassToMap(eb.get(i)));
 		}

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>BookDetail</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body class="user-select">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">BookStore</a>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown">购书
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="./index.html">实体书</a></li>
+                            <li><a href="#">二手书</a></li>
+                            <li><a href="#">电子书</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./writing.html">我要投稿</a>
+                    </li>
+                    <li>
+                        <a href="./sell.html">我要卖书</a>
+                    </li>
+                    <li>
+                        <a href="./list.html">购物车</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown">个人中心
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" data-toggle="modal" data-target="#login">账户</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#personal">个人信息</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#OrderForm">消息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--导航-->
+        </div>
+    </nav>
+
+
+    <section class="container">
+        <div class="content-wrap">
+            <article class="excerpt excerpt-1" style="border: none">
+                <a class="focus" href="#" title="书名" >
+                    <img class="thumb" src="img/1.jpg" alt="书名"  style="display: inline;border: #3c3c3c3c;width: 180px;height: 300px">
+                </a>
+                <div>
+                    <p style="font-size: 20px;font-weight: bold;color: #5e5e5e">书名</p>
+                    <br>
+                    <p class="meta">
+                        <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 217</span>
+                    </p>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+                        作者：
+                        <span>S.C</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;出版社：
+                        <span>清华大学出版社</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;出版时间：
+                        <span>2018/7/1</span>
+                    </div>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+
+                    </div>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+
+                    </div>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+                        剩余：
+                        <span>256</span>
+                        件
+                    </div>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400;">
+                        单价：
+                        <span>￥10</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;购买数量：
+                        <div class="inner" style="float: right;padding-right: 650px">
+                            <div class="item-amount" style="height: 20px;width:77px;overflow: hidden;position: relative;z-index: 1;">
+                                <span href="#" style="display: block;height: 20px;width: 17px;border: 1px solid #e5e5e5;background: #f0f0f0;text-align: center;line-height: 18px;color: #444;position: absolute;top: 0;float: left">-</span>
+                                <input type="text" value="1" class="text text-amount" style="width: 39px;height: 20px;line-height: 15px;border: 1px solid #aaa;color: #343434;text-align: center;padding: 4px 0;background-color: #fff;background-position: -75px -375px;position: absolute;z-index: 2;left: 18px;top: 0;">
+                                <span href="#" style="display: block;height: 20px;width: 17px;border: 1px solid #e5e5e5;background: #f0f0f0;text-align: center;line-height: 18px;color: #444;position: absolute;top: 0;right: 0">+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+
+                    </div>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+                        运费：
+                        <span>免运费</span>
+                    </div>
+                    <div class="detmeta" style="margin: 5px 20px 5px 0px;font-size: 14px;font-weight: 400">
+                        简介：
+                        <p class="note">撒谎的卡上的健康撒即可发噶三脚架撒打瞌睡的监控手段是的哈数据库等会我哈哈我的加快圣诞节卡仕达撒回到家哈数据库的哈萨克的会客室几点回家爱神的箭卡萨</p>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-top: 40px">
+                    <div class="action-clear" style="clear: both;">
+                        <div class="btnbuy" style="float: left;">
+                            <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#personal" rel="nofollow" data-addfastbuy="true" role="button" style="margin-right: 0;float: left;overflow: hidden;position: relative;width: 158px;background-color: #ffeded;border: 1px solid #FF0036;color: red;font-family: 'Microsoft Yahei';height: 38px;line-height: 38px;text-align: center;font-size: 16px;">
+                                立即购买
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2" style="margin-top: 40px;margin-left: 30px">
+                    <div class="action-clear" style="clear: both;">
+                        <div class="btnbuy" style="float: left;">
+                            <a href="./list.html" rel="nofollow" data-addfastbuy="true" role="button" style="margin-right: 0;float: left;overflow: hidden;position: relative;width: 158px;background-color: #ffeded;border: 1px solid #FF0036;color: red;font-family: 'Microsoft Yahei';height: 38px;line-height: 38px;text-align: center;font-size: 16px;">
+                                加入购物车
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+
+        <div class="content-dec col-md-12">
+            <div class="maintabbar" style="background-color: #f7f7f7;border: 1px solid #eee;border-bottom: 1px solid #e4393c;display: block;">
+                <div>
+                    <ul style="margin-top: -1px;">
+                        <li style="position: relative;display: inline-block;cursor: pointer;font-size: 18px;line-height: 50px;margin-left: 20px">
+                            商品评价
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dec col-md-12" style="margin-top: 15px">
+            <div class="user-info col-md-1" style="width: 140px;float: left">
+                12323131
+            </div>
+            <div class="comment-info col-md-10" style="border-bottom: 1px solid #ddd;padding-bottom: 20px">
+                <p style="font-size: 14px;padding: 10px 0;line-height: 180%;color: #333;">哈萨克的哈萨克的骄傲和撒大声地</p>
+                <div>
+                    <span>2018-7-2</span>
+                    <a href="#" class="pull-right"><i class="glyphicon glyphicon-thumbs-up">5</i></a>
+                    <a href="#" class="pull-right">举报&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2" style="margin-top: 40px;margin-left: 200px">
+            <div class="action-clear" style="clear: both;">
+                <div class="btnbuy" style="float: left;">
+                    <a href="#" rel="nofollow" data-addfastbuy="true" role="button" style="margin-right: 0;float: left;overflow: hidden;position: relative;width: 90px;background-color: #a6e1ec;border: 1px solid #5cb85c;color: green;font-family: 'Microsoft Yahei';height: 38px;line-height: 38px;text-align: center;font-size: 16px;">
+                        发表评论
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9" style="margin-top: 10px;margin-left: 200px">
+            <form action="#" class="mar_t15" enctype="multipart/form-data" hidden>
+                <div class="form-group">
+                    <textarea id="content" class="form-control" cols="10" rows="5" placeholder="输入你想说的话..."></textarea>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+
+    <div id="register" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">注册</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">用户名</label>
+                            <input class="form-control required" type="text" placeholder="6-15位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control required" type="password" placeholder="至少6位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">再次输入密码</label>
+                            <input class="form-control required" type="password" placeholder="至少6位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">邮箱</label>
+                            <input class="form-control required" type="email" placeholder="例如:123@123.com">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="reg">提交</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 登录窗口 -->
+    <div id="login" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">登录</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">用户名</label>
+                            <input class="form-control" type="text" placeholder="" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control" type="password" placeholder="" id="password">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="log">登录</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--个人信息-->
+    <div id="personal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">填写个人信息</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">收货人</label>
+                            <input class="form-control required" type="text" placeholder="请输入收货人姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="">收货地址</label>
+                            <input class="form-control required" type="password" placeholder="请输入收货人地址">
+                        </div>
+                        <div class="form-group">
+                            <label for="">联系方式</label>
+                            <input class="form-control required" type="password" placeholder="请输入收货人联系方式">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="reg">提交</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--订单消息-->
+    <div id="OrderForm" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">订单消息</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">书名:</label>
+                            <span>昆虫记</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">数量:</label>
+                            <span>1</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">下单时间:</label>
+                            <span>2018-7-1 18:51:20</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">收货人姓名:</label>
+                            <span>S.C</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">收货地址：</label>
+                            <span>杭州电子科技大学生活区</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">联系方式</label>
+                            <span>13564498489</span>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="reg">确定</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

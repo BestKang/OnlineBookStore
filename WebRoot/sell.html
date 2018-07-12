@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>SellBooks</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body class="user-select">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">BookStore</a>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown">购书
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="./index.html">实体书</a></li>
+                            <li><a href="#">二手书</a></li>
+                            <li><a href="#">电子书</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./writing.html">我要投稿</a>
+                    </li>
+                    <li>
+                        <a href="./sell.html">我要卖书</a>
+                    </li>
+                    <li>
+                        <a href="./list.html">购物车</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown">个人中心
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" data-toggle="modal" data-target="#login">账户</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#personal">个人信息</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#OrderForm">消息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--导航-->
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <div class="col-md-10">
+                <div class="page-header">
+                    <h1>二手书出售</h1>
+                </div>
+
+                <form action="#" class="mar_t15" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title" style="font-size: 20px">书名</label>
+                        <input type="text" id="title" class="form-control" placeholder="请输入书名">
+                    </div>
+                    <div class="form-group">
+                        <label for="select" style="font-size: 20px">书籍描述</label>
+                        <ul>
+                            <li style="font-weight: bold">
+                                选择出售书籍类别：
+                                <select name="cla" id="bookcla">
+                                    <option value="0">教科书</option>
+                                    <option value="1">辅导书</option>
+                                    <option value="2">小说</option>
+                                    <option value="3">杂志</option>
+                                </select>
+                            </li>
+                            <br />
+                            <li style="font-weight: bold">
+                                选择出售书籍新旧程度：
+                                <select name="cla" id="newly">
+                                    <option value="0">未拆封</option>
+                                    <option value="0">拆分但全新</option>
+                                    <option value="1">八成新</option>
+                                    <option value="2">六成新</option>
+                                    <option value="3">四成新</option>
+                                    <option value="3">旧书</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title" style="font-size: 15px;font-weight:bold;color: red;">价格</label>
+                        <input type="text" id="charge" class="form-control" placeholder="请输入待出售书籍金额">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title" style="font-size: 15px;font-weight: bold">发货地址</label>
+                        <input type="text" id="address" class="form-control" placeholder="请输入发货地址">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content" style="font-size: 15px">上传图片</label>
+                        <input type="file" name="file" id="sellpic"/>
+                    </div>
+                    <input type="submit" name="submit" value="发布" style="width: 100px;height: 30px;font-weight: bold;font-size: 15px"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="register" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">注册</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">用户名</label>
+                            <input class="form-control required" type="text" placeholder="6-15位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control required" type="password" placeholder="至少6位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">再次输入密码</label>
+                            <input class="form-control required" type="password" placeholder="至少6位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">邮箱</label>
+                            <input class="form-control required" type="email" placeholder="例如:123@123.com">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="reg">提交</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 登录窗口 -->
+    <div id="login" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">登录</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">用户名</label>
+                            <input class="form-control" type="text" placeholder="" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control" type="password" placeholder="" id="password">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="log">登录</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--个人信息-->
+    <div id="personal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">填写个人信息</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">收货人</label>
+                            <input class="form-control required" type="text" placeholder="请输入收货人姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="">收货地址</label>
+                            <input class="form-control required" type="password" placeholder="请输入收货人地址">
+                        </div>
+                        <div class="form-group">
+                            <label for="">联系方式</label>
+                            <input class="form-control required" type="password" placeholder="请输入收货人联系方式">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="reg">提交</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--订单消息-->
+    <div id="OrderForm" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">订单消息</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">书名:</label>
+                            <span>昆虫记</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">数量:</label>
+                            <span>1</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">下单时间:</label>
+                            <span>2018-7-1 18:51:20</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">收货人姓名:</label>
+                            <span>S.C</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" style="font-size: 15px">收货地址：</label>
+                            <span>杭州电子科技大学生活区</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">联系方式</label>
+                            <span>13564498489</span>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" id="reg">确定</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

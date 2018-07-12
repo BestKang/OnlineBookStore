@@ -156,7 +156,7 @@ public class DbMethod {
 		ArrayList<Pbook> topList=new ArrayList<Pbook>();
 		ResultSet rs = null;
 		Statement ps=null;
-		String sql="select * from pbook order by PbookSoldNumber desc limit 0,2";
+		String sql="select * from pbook order by PbookSoldNumber desc limit 0,15";
 		System.out.println("searchPook查询语句:"+sql);
 		try{
 			ps = conn.createStatement();
