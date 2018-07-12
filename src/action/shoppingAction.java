@@ -178,5 +178,8 @@ public class shoppingAction extends ActionSupport{
 		map.put("shoppingResult", "shibai");
 		return "success";
 	}
-	
+	public String shoppingbus(){
+		
+		return "success";
+	}
 }
