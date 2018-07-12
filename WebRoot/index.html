@@ -72,6 +72,8 @@
 					})
 					$("#topBookList").html(topHtml);
 					$.each(data.PBookList,function(i,values){//实体书列表,初始化加载时默认为实体书列表
+					
+						
 						pbookList+='<article class="excerpt excerpt-1">'+
                    '<a class="focus" href="detail.html?bookId="'+values.idPbook+'" title="'+values.PbookName+'" target="_blank" >'+
                         '<img class="thumb" src="img/'+values.PbookPictureUrl+'" alt="'+values.PbookName+'"  style="display: inline;">'+

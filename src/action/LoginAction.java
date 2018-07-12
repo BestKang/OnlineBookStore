@@ -48,14 +48,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean> 
 			System.out.println("return login result:"+dataMap.get("result"));
 			return SUCCESS;
 		}
-		HttpSession session=MySession.getSession();
-		
-		/*ActionContext actionContext = ActionContext.getContext();
-		Map session = actionContext.getSession();             
-		session.put("NAME","admin");
-		session.put("PWD","123456");*/
-		
-		
+		HttpSession session=MySession.getSession();	
 		session.setAttribute("idUser", loginInfo.get(0).get("idUser"));
 		session.setAttribute("userName",loginInfo.get(0).get("userName"));
 		System.out.println("LoginAction中的idUser:"+session.getAttribute("idUser"));
