@@ -33,6 +33,7 @@ public class registerAction extends ActionSupport implements ModelDriven<NewUser
 		return newUserBean;
 	}
 	public String RegisterExcute(){
+		System.out.println("正在响应注册业务....");
 		if(!new registerService().register(newUserBean)){
 			dataMap=new HashMap<String,Object>();
 			dataMap.put("RegisterResult", "注册失败");

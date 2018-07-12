@@ -111,7 +111,6 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 		this.dataMap = dataMap;
 	}
 	public String busket(){
-		
 		System.out.println("已响应前端购物车业务请求。。。bookId为:"+bsk.getBookId()+" bookType为:"+bsk.getBookType()+" option为："+bsk.getOption());
 		BusketService BS=new BusketService();
 		if(bsk.getOption().equals("add")){
@@ -139,17 +138,18 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 			return SUCCESS;
 		}
 		else if(bsk.getOption().equals("payAll")){
-			System.out.println("正在响应结算业务...");   //通过获得购物车中书籍的信息，用户的信息，收货人的信息，购买的数量 完成结算业务
-	
+			System.out.println("正在响应结算业务...");
 			HttpSession ses=MySession.getSession();
 			BookOrdersService bookOrdersService=new BookOrdersService();
-			if(ses.getAttribute("idUser")!=null){						//获取用户id
+			if(ses.getAttribute("idUser")!=null){
 				idUser=ses.getAttribute("idUser").toString();
-				if(ses.getAttribute("busketList")!=null){						//获取session中存储的书籍信息列表
+				if(ses.getAttribute("busketList")!=null){
 					ArrayList<Map<String, Object>> arrayList = (ArrayList<Map<String, Object>>)ses.getAttribute("busketList");
 					user.setIdUser((String)ses.getAttribute("idUser"));
 					Map<String,Object> mapobj=new HashMap<String, Object>();
-					for (int i = 0; i < arrayList.size(); i++) {							//循环遍历，购买生成订单
+					System.out.println("arraylist："+arrayList.size());
+					for (int i = 0; i <arrayList.size(); i++) {
+						System.out.println("循环执行次数"+i);
 						mapobj=arrayList.get(i);
 						if (mapobj.get("bookType").toString().equals("pbook")) {
 							pbook.setIdPbook(mapobj.get("bookId").toString());
@@ -162,7 +162,10 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 							rcname="不知道是谁的收货人";
 							if (bookOrdersService.buybuybuy(pbook, user, number, rcname,mapobj.get("bookType").toString())) {
 								dataMap.put("shoppingResult:"+i+"", "成功");
-								
+								BusketBean bsket=new BusketBean();
+								bsket.setBookId(pbook.getIdPbook());
+								bsket.setBookType(mapobj.get("bookType").toString());
+								//BS.removeOne(bsket);
 							}else {
 								dataMap.put("shoppingResult"+i+"", "shibai");
 							}
@@ -179,21 +182,23 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 							rcname="不知道是谁的收货人";
 							if (bookOrdersService.buybuybuy(pbook, user, number, rcname,mapobj.get("bookType").toString())) {
 								dataMap.put("shoppingResult:"+i+"", "成功");
-								
+								BusketBean bsket=new BusketBean();
+								bsket.setBookId(pbook.getIdPbook());
+								bsket.setBookType(mapobj.get("bookType").toString());
+								//BS.removeOne(bsket);
 							}else {
-								dataMap.put("shoppingResult"+i+"", "shibai");
+								dataMap.put("shoppingResult"+i+"", "失败");
 							}
-							
 						}
-						
 					}
+					BS.removeAllBusket();
 				}
 			}
 			return SUCCESS;
 					
 			/*if(BS.payAll())
 			{
-				return SUCCESS;
+				return SUCCESS;	
 			}*/
 		}
 		else if(bsk.getOption().equals("removeOne")){
