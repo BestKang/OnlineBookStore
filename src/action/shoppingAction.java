@@ -7,10 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Id;
+import javax.servlet.http.HttpSession;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Pbook;
 import bean.user;
+import db.MySession;
 import javassist.compiler.ast.NewExpr;
 import service.BookOrdersService;
 
@@ -145,20 +149,6 @@ public class shoppingAction extends ActionSupport{
 	public String shopping(){
 		BookOrdersService bookOrdersService=new BookOrdersService();
 		//List<Map<String,Object>> orderlist=new ArrayList<Map<String,Object>>();
-		System.out.println("recname:"+rcname);
-		System.out.println("idPbook:"+idPbook);
-		System.out.println("pbookAbstract:"+pbookAbstract);
-		System.out.println("pbookClickTimes:"+pbookClickTimes);
-		System.out.println("pbookName:"+pbookName);
-		System.out.println("pbookPrice:"+pbookPrice);
-		System.out.println("pbookPublisher:"+pbookPublisher);
-		System.out.println("pbookPublishTime:"+pbookPublishTime);
-		System.out.println("pbookPictureUrl:"+pbookPictureUrl);
-		System.out.println("pbookSoldNumber:"+pbookSoldNumber);
-		System.out.println("pbookStockNumber:"+pbookStockNumber);
-		System.out.println("pbookWriter:"+pbookWriter);
-		System.out.println("idUser:"+idUser);
-		System.out.println("number:"+number);
 		pbook.setIdPbook(idPbook);
 		pbook.setPbookAbstract(pbookAbstract);
 		pbook.setPbookClickTimes(pbookClickTimes);
@@ -179,7 +169,54 @@ public class shoppingAction extends ActionSupport{
 		return "success";
 	}
 	public String shoppingbus(){
-		
+		HttpSession ses=MySession.getSession();
+		BookOrdersService bookOrdersService=new BookOrdersService();
+		if(ses.getAttribute("idUser")!=null){
+			idUser=ses.getAttribute("idUser").toString();
+			if(ses.getAttribute("busketList")!=null){
+				ArrayList<Map<String, Object>> arrayList = (ArrayList<Map<String, Object>>)ses.getAttribute("busketList");
+				user.setIdUser((String)ses.getAttribute("idUser"));
+				Map<String,Object> mapobj=new HashMap<String, Object>();
+				for (int i = 0; i < arrayList.size(); i++) {
+					mapobj=arrayList.get(i);
+					if (map.get("bookType").toString().equals("pbook")) {
+						pbook.setIdPbook(mapobj.get("bookId").toString());
+						number=Integer.valueOf(mapobj.get("num").toString());
+						pbook.setPbookName(mapobj.get("PbookName").toString());
+						pbook.setPbookPictureUrl(mapobj.get("PbookPictureUrl").toString());
+						pbook.setPbookPrice(Double.valueOf(mapobj.get("PbookPrice").toString()));
+						user.setIdUser(idUser);	
+						user.setUserAddress("随便填的");
+						rcname="不知道是谁的收货人";
+						if (bookOrdersService.buybuybuy(pbook, user, number, rcname,mapobj.get("bookType").toString())) {
+							map.put("shoppingResult:"+i+"", "成功");
+							
+						}else {
+							map.put("shoppingResult"+i+"", "shibai");
+						}
+						
+					}
+					if (mapobj.get("bookType").toString().equals("obook")) {
+						pbook.setIdPbook(mapobj.get("bookId").toString());
+						number=Integer.valueOf(mapobj.get("num").toString());
+						pbook.setPbookName(mapobj.get("obookName").toString());
+						pbook.setPbookPictureUrl(mapobj.get("obookPictureUrl").toString());
+						pbook.setPbookPrice(Double.valueOf(mapobj.get("obookPrice").toString()));
+						user.setIdUser(idUser);	
+						user.setUserAddress("随便填的");
+						rcname="不知道是谁的收货人";
+						if (bookOrdersService.buybuybuy(pbook, user, number, rcname,mapobj.get("bookType").toString())) {
+							map.put("shoppingResult:"+i+"", "成功");
+							
+						}else {
+							map.put("shoppingResult"+i+"", "shibai");
+						}
+						
+					}
+					
+				}
+			}
+		}
 		return "success";
 	}
 }

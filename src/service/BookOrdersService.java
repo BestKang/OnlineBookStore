@@ -14,6 +14,8 @@ import java.util.Map;
 
 import javax.enterprise.deploy.model.DDBean;
 
+import org.apache.struts2.components.Else;
+
 import com.mysql.jdbc.Connection;
 
 import bean.Ebook;
@@ -165,4 +167,76 @@ public class BookOrdersService {
 		return true;
 		
 	}
+	
+	public boolean buybuybuy(Pbook pbook,user user,int number,String rcname,String type) {//根据书籍信息id，用户信息 id，购买数量，收货人
+		//生成订单
+			DbMethod db=new DbMethod();
+			
+			String idUser=user.getIdUser();
+			
+			String bookId=pbook.getIdPbook();
+			
+			String bookName=pbook.getPbookName();
+			
+			int bookNumber=number;
+			
+			double cost = number*pbook.getPbookPrice();
+			
+			String shippingAddress=user.getUserAddress();
+			
+			String receiverName = rcname;
+			
+			String booktype=type;
+			
+			String pictureUrl=pbook.getPbookPictureUrl();
+			
+			Date ss = new Date();
+			
+			SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			String finishTime = format0.format(ss.getTime());//这个就是把时间戳经过处理得到期望格式的时间
+			
+			Object[] args={finishTime,idUser,bookId,bookName,bookNumber,cost,shippingAddress,receiverName,booktype,pictureUrl};
+			
+			System.out.println("购买前");
+			
+			db.setAutoCommit();
+			
+			String sql="insert into bookorders(finishTime,idUser,bookId,bookName,bookNumber,cost,shippingAddress,receiverName,booktype,pictureUrl) values(?,?,?,?,?,?,?,?,?,?)";
+			
+			boolean isInsert=db.insert(sql,args);
+			if (!isInsert) {
+				System.out.println("订单插入失败");
+			return false;
+			}
+			if (booktype.equals("pbook")) {
+				String sql2="update pbook set PbookStockNumber=PbookStockNumber-'"+number+"',PbookSoldNumber=PbookSoldNumber+'"+number+"' where idPbook ='"+pbook.getIdPbook()+"'";
+				
+				boolean isUpdate=db.update(sql2);
+				db.commit();
+				if (!isUpdate) {
+				return false;
+				}
+				System.out.println("购买实体书后，实体书库存更新成功");
+				return true;
+			}
+			else if (booktype.equals("obook")) {
+				String sql2="update obook set obookStockNumber=obookStockNumber-'"+number+"',obookSoldNumber=obookSoldNumber+'"+number+"' where idobook ='"+pbook.getIdPbook()+"'";
+				
+				boolean isUpdate=db.update(sql2);
+				db.commit();
+				if (!isUpdate) {
+				return false;
+				}
+				System.out.println("购买二手书后，二手书库存更新成功");
+				return true;
+			}			
+			else {
+				System.out.println("购买电子书后");
+				return true;
+			}
+
+}
+	
+		
 }

@@ -51,7 +51,7 @@ public class IsUserLogin extends ActionSupport  implements ModelDriven<ClientTim
 			return SUCCESS;
 		}
 		userInfo.put("result","未登录");
-		System.out.println("22222"+ses.getAttribute("idUser"));
+		System.out.println("登录的ID："+ses.getAttribute("idUser"));
 		System.out.println("用户是否登录："+userInfo.get("result"));
 		return SUCCESS;
 	}
