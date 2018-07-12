@@ -167,7 +167,7 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 								bsket.setBookType(mapobj.get("bookType").toString());
 								//BS.removeOne(bsket);
 							}else {
-								dataMap.put("shoppingResult"+i+"", "shibai");
+								dataMap.put("shoppingResult"+i+"", "失败");
 							}
 							
 						}

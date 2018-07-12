@@ -512,4 +512,105 @@ public class DbMethod {
 			e.printStackTrace();
 		}
 	}
+	public Pbook searchOne(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<Pbook> searchPbookByName(String name){
+		ArrayList<Pbook> objArrayL=new ArrayList<Pbook>();
+		ResultSet rs = null;
+		Statement ps=null;
+		String sql="select * from pbook where PbookName='"+name+"'";
+		System.out.println("searchPook查询语句:"+sql);
+		try{
+			ps = conn.createStatement();
+		 rs=ps.executeQuery(sql);
+		while(rs.next()){
+			Pbook pb=new Pbook();
+			pb.setIdPbook(rs.getString("idPbook"));
+			pb.setPbookAbstract(rs.getString("PbookAbstract"));
+			pb.setPbookClickTimes(rs.getInt("PbookClickTimes"));
+			pb.setPbookName(rs.getString("PbookName"));
+			pb.setPbookPictureUrl(rs.getString("PbookPictureUrl"));
+			pb.setPbookPrice(rs.getDouble("PbookPrice"));
+			pb.setPbookPublisher(rs.getString("PbookPublisher"));
+			pb.setPbookPublishTime(rs.getString("PbookPublishTime"));
+			pb.setPbookSoldNumber(rs.getInt("PbookSoldNumber"));
+			pb.setPbookStockNumber(rs.getInt("PbookStockNumber"));
+			pb.setPbookWriter(rs.getString("PbookWriter"));
+			objArrayL.add(pb);
+		}
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("\nsearch pbook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+			
+		}finally{
+			connDB.frees( ps, rs);
+		}	
+		
+		return objArrayL;
+}
+public ArrayList<Ebook> searchebookByName(String name){
+	ArrayList<Ebook> objArrayL=new ArrayList<Ebook>();
+	ResultSet rs = null;
+	Statement ps=null;
+	String sql="select * from ebook where ebookName='"+name+"'";
+	System.out.println("searcheook查询语句:"+sql);
+	try{
+		ps = conn.createStatement();
+	 rs=ps.executeQuery(sql);
+	while(rs.next()){
+		Ebook pb=new Ebook();
+		pb.setIdebook(rs.getString("idebook"));
+		pb.setEbookAbstract(rs.getString("ebookAbstract"));
+		pb.setEbookClickTimes(rs.getInt("ebookClickTimes"));
+		pb.setEbookPictureUrl(rs.getString("ebookPictureUrl"));
+		pb.setEbookPrice(rs.getDouble("ebookPrice"));
+		pb.setEbookSoldNumber(rs.getInt("ebookSoldNumber"));
+		pb.setEbookWriter(rs.getString("ebookWriter"));
+		pb.setEbookNameS(rs.getString("ebookName"));
+		objArrayL.add(pb);
+	}
+	}catch(SQLException e){
+		e.printStackTrace();
+		System.out.println("\nsearchebook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+		
+	}finally{
+		connDB.frees( ps, rs);
+	}	
+	return objArrayL;
+}
+public ArrayList<Obook> searchobookbyname(String name){
+	ArrayList<Obook> objArrayL=new ArrayList<Obook>();
+	ResultSet rs = null;
+	Statement ps=null;
+	String sql="select * from obook where obookName='"+name+"'";
+	System.out.println("searchObook查询语句:"+sql);
+	try{
+		ps = conn.createStatement();
+	 rs=ps.executeQuery(sql);
+	while(rs.next()){
+		Obook pb=new Obook();
+		pb.setIdobook(rs.getString("idobook"));
+		pb.setObookAbstract(rs.getString("obookAbstract"));
+		pb.setObookClickTimes(rs.getInt("obookClickTimes"));
+		pb.setObookName(rs.getString("obookName"));
+		pb.setObookPictureUrl(rs.getString("obookPictureUrl"));
+		pb.setObookPrice(rs.getDouble("obookPrice"));
+		pb.setObookPublisher(rs.getString("obookPublisher"));
+		pb.setObookPublishTime(rs.getString("obookPublishTime"));
+		pb.setObookSoldNumber(rs.getInt("obookSoldNumber"));
+		pb.setObookStockNumber(rs.getInt("obookStockNumber"));
+		pb.setObookWriter(rs.getString("obookWriter"));
+		objArrayL.add(pb);
+	}
+	}catch(SQLException e){
+		e.printStackTrace();
+		System.out.println("\nsearchobook Fail--[sqlException]:"+" "+e.getMessage()+"\n");
+		
+	}finally{
+		connDB.frees( ps, rs);
+	}	
+	return objArrayL;
+}
 }
