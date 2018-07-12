@@ -14,7 +14,7 @@ import bean.ClientTime;
 import bean.user;
 import service.BookOrdersService;
 
-public class queryordersAction extends ActionSupport  {
+public class queryordersAction extends ActionSupport  {								//查询订单的功能
 	user user = new user();
 	String idUser="";
 	public String getIdUser() {
@@ -43,7 +43,7 @@ public class queryordersAction extends ActionSupport  {
 	public void setMap(Map<String, Object> map) {
 		this.map = map;
 	}
-	public String queryorderslist() {
+	public String queryorderslist() {										//通过页面传入的idUser 查询该用户的订单情况
 		System.out.println("已响应查询订单请求..iduser为:"+this.idUser);
 		user.setIdUser(this.idUser);
 		System.out.println("user.getIdUser()为:"+user.getIdUser());

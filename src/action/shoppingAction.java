@@ -18,8 +18,8 @@ import db.MySession;
 import javassist.compiler.ast.NewExpr;
 import service.BookOrdersService;
 
-public class shoppingAction extends ActionSupport{
-	List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
+public class shoppingAction extends ActionSupport{										//书籍信息查看界面单个购买功能
+	List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();				//购物车结算购买功能
 	Map<String,Object> map=new HashMap<String, Object>();
 	Pbook pbook=new Pbook();
 	String idPbook;
@@ -146,9 +146,13 @@ public class shoppingAction extends ActionSupport{
 	public void setUser(user user) {
 		this.user = user;
 	}
-	public String shopping(){
-		BookOrdersService bookOrdersService=new BookOrdersService();
-		//List<Map<String,Object>> orderlist=new ArrayList<Map<String,Object>>();
+	public String shopping(){												//通过页面传入的实体书idPbook，实体书简介pbookAbstract，
+																			//实体书点击次数pbookClickTimes
+		BookOrdersService bookOrdersService=new BookOrdersService();		//pbookName书名,
+																			//pbookPictureUrl图片路径,pbookPrice书本单价
+																			//pbookPublisher出版社,pbookPublishTime出版时间
+																			//pbookSoldNumber已售数量,pbookStockNumber库存数量
+																			//pbookWriter作者,用户idUser,购买数量number,收货人名字rcname
 		pbook.setIdPbook(idPbook);
 		pbook.setPbookAbstract(pbookAbstract);
 		pbook.setPbookClickTimes(pbookClickTimes);
@@ -168,7 +172,15 @@ public class shoppingAction extends ActionSupport{
 		map.put("shoppingResult", "shibai");
 		return "success";
 	}
+	
+	
+	
+	/**
+	 * @return
+	 * 通过购物车传入的书籍信息，购买生成订单
+	 */
 	public String shoppingbus(){
+		
 		HttpSession ses=MySession.getSession();
 		BookOrdersService bookOrdersService=new BookOrdersService();
 		if(ses.getAttribute("idUser")!=null){

@@ -56,6 +56,11 @@
                 <param name="root">dataMap</param>
             </result>
         </action>
+         <action name="Search" method="searchbookbynameexcute" class="action.adminsearchAction">
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
        <action name="showComments" method="showComments" class="action.showCommentsAction">
         <result type="json">
                 <param name="root">dataMap</param>

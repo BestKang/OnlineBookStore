@@ -111,6 +111,7 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 		this.dataMap = dataMap;
 	}
 	public String busket(){
+		
 		System.out.println("已响应前端购物车业务请求。。。bookId为:"+bsk.getBookId()+" bookType为:"+bsk.getBookType()+" option为："+bsk.getOption());
 		BusketService BS=new BusketService();
 		if(bsk.getOption().equals("add")){
@@ -138,16 +139,17 @@ public class Busket extends ActionSupport implements ModelDriven<BusketBean>{
 			return SUCCESS;
 		}
 		else if(bsk.getOption().equals("payAll")){
-			System.out.println("正在响应结算业务...");
+			System.out.println("正在响应结算业务...");   //通过获得购物车中书籍的信息，用户的信息，收货人的信息，购买的数量 完成结算业务
+	
 			HttpSession ses=MySession.getSession();
 			BookOrdersService bookOrdersService=new BookOrdersService();
-			if(ses.getAttribute("idUser")!=null){
+			if(ses.getAttribute("idUser")!=null){						//获取用户id
 				idUser=ses.getAttribute("idUser").toString();
-				if(ses.getAttribute("busketList")!=null){
+				if(ses.getAttribute("busketList")!=null){						//获取session中存储的书籍信息列表
 					ArrayList<Map<String, Object>> arrayList = (ArrayList<Map<String, Object>>)ses.getAttribute("busketList");
 					user.setIdUser((String)ses.getAttribute("idUser"));
 					Map<String,Object> mapobj=new HashMap<String, Object>();
-					for (int i = 0; i < arrayList.size(); i++) {
+					for (int i = 0; i < arrayList.size(); i++) {							//循环遍历，购买生成订单
 						mapobj=arrayList.get(i);
 						if (mapobj.get("bookType").toString().equals("pbook")) {
 							pbook.setIdPbook(mapobj.get("bookId").toString());
