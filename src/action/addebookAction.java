@@ -31,7 +31,7 @@ public class addebookAction extends ActionSupport implements ModelDriven<Ebook>{
 		return ebook;
 	}
 	
-	public String addobookExcute(){
+	public String addEbookExcute(){
 		 operatebookservice operatebookservice= new operatebookservice();
 		if(!operatebookservice.addeBook(ebook)){
 			dataMap=new HashMap<String,Object>();

@@ -76,6 +76,11 @@
                 <param name="root">dataMap</param>
             </result>
         </action>
+        <action name="addebook" method="addEbookExcute" class="action.addebookAction">		<!-- 添加二手书 -->
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
         <action name="writeComments" method="writeComments" class="action.writeCommentsAction">					<!-- 书写评论 -->
          <result type="json">
                 <param name="root">dataMap</param>
@@ -87,6 +92,11 @@
             </result>
         </action>
         <action name="Updateobook" method="updateExcute" class="action.addobookAction">				<!-- 更新二手书 -->
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+        <action name="UpdateEbook" method="updateExcute" class="action.addebookAction">				<!-- 更新d电子书 -->
             <result type="json">
                 <param name="root">dataMap</param>
             </result>

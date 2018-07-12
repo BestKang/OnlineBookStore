@@ -59,7 +59,7 @@ import service.updateUserInfo;
 			// TODO Auto-generated method stub
 			return pbook;
 		}
-		public String addExcute(){
+		public String addExcute(){								//添加实体书
 			 operatebookservice operatebookservice= new operatebookservice();
 			if(!operatebookservice.addPBook(pbook)){
 				dataMap=new HashMap<String,Object>();
@@ -73,7 +73,7 @@ import service.updateUserInfo;
 			return SUCCESS;
 		}
 		
-		public String addobookExcute(){
+		public String addobookExcute(){								//添加二手书
 			 operatebookservice operatebookservice= new operatebookservice();
 			if(!operatebookservice.addoBook(obook)){
 				dataMap=new HashMap<String,Object>();
@@ -87,7 +87,7 @@ import service.updateUserInfo;
 			return SUCCESS;
 		}
 		
-		public String updateExcute(){
+		public String updateExcute(){								//修改实体书
 			 operatebookservice operatebookservice= new operatebookservice();
 			if(!operatebookservice.updatePBook(pbook)){
 				dataMap=new HashMap<String,Object>();
