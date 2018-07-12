@@ -270,4 +270,76 @@ public Map<String,Object> ClassToMap(Ebook ob){
 		db.commit();
 		return false;
 	}
+	
+	
+	public boolean addeBook(Ebook obook){//增加一本电子书
+		String pbookName=obook.getEbookNameS();
+		String pbookWriter=obook.getEbookWriter();
+		//String pbookPublisher=obook.get;
+		//String pbookPublishTime=obook.getObookPublishTime();
+		double pbookPrice=obook.getEbookPrice();
+		//int pbookStockNumber=obook.get;
+		int pbookSoldNumber=obook.getEbookSoldNumber();
+		String pbookAbstract=obook.getEbookAbstract();
+		String pbookPictureUrl=obook.getEbookPictureUrl();
+		int pbookClickTimes=obook.getEbookClickTimes();
+		String obookUpTime=obook.getEbookTxtUrl();
+		Object[] args={pbookName,pbookWriter,pbookAbstract,pbookPictureUrl,pbookClickTimes,pbookPrice,pbookSoldNumber,obookUpTime};
+		String sql="insert into ebook(ebookName,ebookWriter,ebookAbstract,ebookPictureUrl,ebookClickTimes,ebookPrice,ebookSoldNumber,ebookTxtUrl) "+
+		"values(?,?,?,?,?,?,?,?)";
+		db.setAutoCommit();
+		if (db.insert(sql, args)) {
+			db.commit();
+			
+			return true;
+		}
+		db.commit();
+		return false;
+	}
+
+	public boolean updateEBook(Ebook obook){//电子书信息更新
+		String pbookName=obook.getEbookNameS();
+		String pbookWriter=obook.getEbookWriter();
+		double pbookPrice=obook.getEbookPrice();
+		int pbookSoldNumber=obook.getEbookSoldNumber();
+		String pbookAbstract=obook.getEbookAbstract();
+		String pbookPictureUrl=obook.getEbookPictureUrl();
+		int pbookClickTimes=obook.getEbookClickTimes();
+		String obookUpTime=obook.getEbookTxtUrl();
+		List<String> attr=new ArrayList<String>();
+		List<String> value=new ArrayList<String>();
+		attr.add("ebookName");
+		attr.add("ebookWriter");
+		//attr.add("obookPublisher");
+		//attr.add("obookPublishTime");
+		attr.add("ebookPrice");
+		//attr.add("obookStockNumber");
+		attr.add("ebookSoldNumber");
+		attr.add("ebookAbstract");
+		attr.add("oebookPictureUrl");
+		attr.add("ebookClickTimes");
+		attr.add("obookTxtUrl");
+		value.add(pbookName);
+		value.add(pbookWriter);
+		//value.add(pbookPublisher);
+		//value.add(pbookPublishTime);
+		value.add(String.valueOf(pbookPrice));
+		//value.add(String.valueOf(pbookStockNumber));
+		value.add(String.valueOf(pbookSoldNumber));
+		value.add(pbookAbstract);
+		value.add(pbookPictureUrl);
+		value.add(String.valueOf(pbookClickTimes));
+		value.add(obookUpTime);
+		db.setAutoCommit();
+		if (db.update("ebook", attr, value, "where idebook='"+obook.getIdebook()+"'")) {
+			db.commit();
+			return true;
+		}
+		db.commit();
+		
+		/*if (db.update(sql)) {
+			return true;
+		}	*/	
+		return false;
+	}
 }
