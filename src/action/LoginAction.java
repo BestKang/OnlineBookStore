@@ -10,6 +10,7 @@ import service.LoginService;
 
 import bean.UserBean;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -48,9 +49,16 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean> 
 			return SUCCESS;
 		}
 		HttpSession session=MySession.getSession();
+		
+		/*ActionContext actionContext = ActionContext.getContext();
+		Map session = actionContext.getSession();             
+		session.put("NAME","admin");
+		session.put("PWD","123456");*/
+		
+		
 		session.setAttribute("idUser", loginInfo.get(0).get("idUser"));
 		session.setAttribute("userName",loginInfo.get(0).get("userName"));
-		System.out.println("idUser:"+session.getAttribute("iduser"));
+		System.out.println("LoginAction中的idUser:"+session.getAttribute("idUser"));
 		dataMap=new HashMap<String, Object>();
 		dataMap.put("result", "login success");
 		System.out.println("return login result:"+dataMap.get("result"));
