@@ -2,7 +2,7 @@ package bean;
 
 public class Ebook {
 	private String idebook;
-	private String ebookName;
+	private String ebookNameS;
 	private String ebookWriter;
 	private String ebookAbstract;
 	private String ebookPictureUrl;
@@ -10,24 +10,17 @@ public class Ebook {
 	private double ebookPrice;
 	private int ebookSoldNumber;
 	private String ebookTxtUrl;
-	private String lastUpdateTime;
-	public String getLastUpdateTime() {
-		return lastUpdateTime;
-	}
-	public void setLastUpdateTime(String lastUpdateTime) {
-		this.lastUpdateTime = lastUpdateTime;
-	}
 	public String getIdebook() {
 		return idebook;
 	}
 	public void setIdebook(String idebook) {
 		this.idebook = idebook;
 	}
-	public String getEbookName() {
-		return ebookName;
+	public String getEbookNameS() {
+		return ebookNameS;
 	}
-	public void setEbookName(String ebookName) {
-		this.ebookName = ebookName;
+	public void setEbookNameS(String ebookNameS) {
+		this.ebookNameS = ebookNameS;
 	}
 	public String getEbookWriter() {
 		return ebookWriter;

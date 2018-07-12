@@ -11,12 +11,18 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import bean.UserBean;
 import bean.ClientTime;
-
 import bean.user;
 import service.BookOrdersService;
 
 public class queryordersAction extends ActionSupport  {
 	user user = new user();
+	String idUser="";
+	public String getIdUser() {
+		return idUser;
+	}
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
+	}
 	List<Map<String,Object>> data=new ArrayList<Map<String,Object>>();
 	Map<String,Object> map=new HashMap<String, Object>();
 	public user getUser() {
@@ -38,14 +44,13 @@ public class queryordersAction extends ActionSupport  {
 		this.map = map;
 	}
 	public String queryorderslist() {
+		System.out.println("已响应查询订单请求..iduser为:"+this.idUser);
+		user.setIdUser(this.idUser);
+		System.out.println("user.getIdUser()为:"+user.getIdUser());
 		BookOrdersService bookOrdersService=new BookOrdersService();
 		List<Map<String,Object>> orderlist=new ArrayList<Map<String,Object>>();
-		
-		
-		
-		
 		orderlist=bookOrdersService.getOrderList(user);
 		map.put("order", orderlist);
-		return SUCCESS;
+		return "success";
 	}
 }

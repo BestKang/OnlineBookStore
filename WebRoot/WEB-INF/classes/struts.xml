@@ -34,46 +34,40 @@
         <action name="isLogin" method="isUserLoginRs" class="action.IsUserLogin">
             <result type="json" >
                 <param name="root">userInfo</param>
-            </result>
-         </action>
-
+                </result>
+                </action>
         <action name="queryorderslist" method="queryorderslist" class="action.queryordersAction">
-            <result name="SUCCEESS" type="json">
-                <param name="root">map</param>
-            </result>
-        </action>
-        <action name="shopping" method="shopping" class="action.shoppingAction">
             <result name="success" type="json">
                 <param name="root">map</param>
             </result>
         </action>
-
-        <action name="upLoadBook" method="upLoadBook" class="action.upLoadEbookAction">
-			 <result type="json">
+        <action name="shopping" method="shopping" class="action.shoppingAction">
+            <result type="json">
+                <param name="root">map</param>
+            </result>
+        </action>
+      <action name="upLoadBook" method="upLoadBook" class="action.upLoadEbookAction">
+       <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
         <action name="adminSearch" method="searchexcute" class="action.adminsearchAction">
-
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-
-         <action name="showComments" method="showComments" class="action.showCommentsAction">
-			<result type="json">
+       <action name="showComments" method="showComments" class="action.showCommentsAction">
+        <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
         <action name="adminAdd" method="addExcute" class="action.adminAddAction">
-
             <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
-
-         <action name="writeComments" method="writeComments" class="action.writeCommentsAction">
- 			<result type="json">
+        <action name="writeComments" method="writeComments" class="action.writeCommentsAction">
+         <result type="json">
                 <param name="root">dataMap</param>
             </result>
         </action>
@@ -82,9 +76,23 @@
                 <param name="root">dataMap</param>
             </result>
         </action>
-        
-        <action name="upload" class="action.UploadAction">  <!--测试用-->
-            <result>/uploadSuccess.jsp</result>
+        <action name="busket" method="busket" class="action.Busket"><!-- 购物车 -->
+            <result type="json">
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+         <action name="showBusketInfo" method="showBusketInfo" class="action.showBusketInfo"><!-- 购物车 -->
+            <result name="SUCCESS" type="json">
+                <param name="root">dataMap</param>
+            </result>
+            <result name="FAIL" type="json">
+                <param name="root">map</param>
+            </result>
+        </action>
+        <action name="getAllMoney" method="getAllMoney" class="action.getAllMoney"><!-- 购物车 -->
+            <result name="SUCCESS" type="json">
+                <param name="root">dataMap</param>
+            </result>
         </action>
     </package>
 </struts>

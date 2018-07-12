@@ -23,7 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="bookOrder" method="post">
+    <form action="queryorderslist" method="post">
+   输入userId： <input type="text"  name="idUser">
     <input type="submit" value="点击获取订单列表">
     </form>
   </body>
